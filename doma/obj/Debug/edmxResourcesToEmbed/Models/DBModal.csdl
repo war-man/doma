@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectDMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ProjectDMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="SanPhams" EntityType="ProjectDMModel.SanPham" />
+  </EntityContainer>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DonGia" Type="Int32" />
+    <Property Name="hinh1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="hinh2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="hinh3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

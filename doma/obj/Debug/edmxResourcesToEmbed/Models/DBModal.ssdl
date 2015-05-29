@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectDMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar(max)" />
+    <Property Name="DonGia" Type="int" />
+    <Property Name="hinh1" Type="ntext" />
+    <Property Name="hinh2" Type="ntext" />
+    <Property Name="hinh3" Type="ntext" />
+  </EntityType>
+  <EntityContainer Name="ProjectDMModelStoreContainer">
+    <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

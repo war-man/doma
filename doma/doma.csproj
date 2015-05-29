@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -169,12 +171,71 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\etalage.css" />
+    <Content Include="Content\css\megamenu.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\images\11.png" />
+    <Content Include="Content\images\ac.jpg" />
+    <Content Include="Content\images\ar.png" />
+    <Content Include="Content\images\back.png" />
+    <Content Include="Content\images\banner.jpg" />
+    <Content Include="Content\images\close.png" />
+    <Content Include="Content\images\do.png" />
+    <Content Include="Content\images\facebook.png" />
+    <Content Include="Content\images\gi.jpg" />
+    <Content Include="Content\images\gi1.jpg" />
+    <Content Include="Content\images\gi2.jpg" />
+    <Content Include="Content\images\gi3.jpg" />
+    <Content Include="Content\images\gi4.jpg" />
+    <Content Include="Content\images\gi5.jpg" />
+    <Content Include="Content\images\gpluse.png" />
+    <Content Include="Content\images\img-sprite.png" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\menu.png" />
+    <Content Include="Content\images\p1.png" />
+    <Content Include="Content\images\p2.png" />
+    <Content Include="Content\images\p3.png" />
+    <Content Include="Content\images\p4.png" />
+    <Content Include="Content\images\p5.png" />
+    <Content Include="Content\images\p6.png" />
+    <Content Include="Content\images\pi.jpg" />
+    <Content Include="Content\images\pi1.jpg" />
+    <Content Include="Content\images\pi2.jpg" />
+    <Content Include="Content\images\pi3.jpg" />
+    <Content Include="Content\images\pi4.jpg" />
+    <Content Include="Content\images\rss.png" />
+    <Content Include="Content\images\s1.jpg" />
+    <Content Include="Content\images\s11.jpg" />
+    <Content Include="Content\images\s12.jpg" />
+    <Content Include="Content\images\s13.jpg" />
+    <Content Include="Content\images\s14.jpg" />
+    <Content Include="Content\images\s2.jpg" />
+    <Content Include="Content\images\s3.jpg" />
+    <Content Include="Content\images\s4.jpg" />
+    <Content Include="Content\images\sh.png" />
+    <Content Include="Content\images\sh1.png" />
+    <Content Include="Content\images\sh2.png" />
+    <Content Include="Content\images\sh3.png" />
+    <Content Include="Content\images\sh4.png" />
+    <Content Include="Content\images\sh5.png" />
+    <Content Include="Content\images\shoes-707343_640.jpg" />
+    <Content Include="Content\images\shoes-707343_6401.jpg" />
+    <Content Include="Content\images\si.jpg" />
+    <Content Include="Content\images\si1.jpg" />
+    <Content Include="Content\images\st.png" />
+    <Content Include="Content\images\twitter.png" />
+    <Content Include="Content\images\Untitled-6.png" />
+    <Content Include="Content\images\zoom.png" />
+    <Content Include="Content\js\easing.js" />
+    <Content Include="Content\js\jquery.etalage.min.js" />
+    <Content Include="Content\js\jquery.flexisel.js" />
+    <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\megamenu.js" />
+    <Content Include="Content\js\move-top.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -214,6 +275,7 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_header_menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -224,6 +286,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

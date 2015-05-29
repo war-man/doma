@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectDMModelStoreContainer" CdmEntityContainer="ProjectDMEntities">
+    <EntitySetMapping Name="SanPhams">
+      <EntityTypeMapping TypeName="ProjectDMModel.SanPham">
+        <MappingFragment StoreEntitySet="SanPham">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+          <ScalarProperty Name="hinh1" ColumnName="hinh1" />
+          <ScalarProperty Name="hinh2" ColumnName="hinh2" />
+          <ScalarProperty Name="hinh3" ColumnName="hinh3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
