@@ -99,7 +99,7 @@ body {
 .content-wrapper,
 .right-side {
   min-height: 100%;
-  background-color: #ecf0f5;
+  background-color: #ffffff;
   z-index: 800;
 }
 .main-footer {
@@ -1619,6 +1619,7 @@ a:focus {
   background: #fff;
 }
 .info-box-icon {
+      padding-top: 20px;
   border-top-left-radius: 2px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;

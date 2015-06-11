@@ -1,0 +1,9 @@
+﻿.box-img {
+    box-shadow: 5px 5px 5px #D7D7D7;
+      border-top: 3px solid #FFFFFF !important;
+}
+
+.img-box {
+    width: 100%;
+    max-width: 450px;
+}
