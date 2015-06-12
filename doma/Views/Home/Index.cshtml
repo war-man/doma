@@ -3,7 +3,7 @@
 }
 <script src="~/scripts/my_js/home_index_controller.js"></script>
 
-<div ng-controller="home_index_controller" class="row">
+<div ng-controller="home_index_controller" class="row" ng-init="init()">
     <div class="row">
         <div class="col-md-9">
             <div class="box box-solid no-padding">
@@ -106,6 +106,7 @@
     </h2>
 
     <hr />
+
     <div class="col-md-3" ng-repeat="product in products">
         <div class="box box-img">
             <div class="box-body">
@@ -114,13 +115,13 @@
             <div class="box-footer" style="text-align:center;">
                 <p>{{product.name}}</p>
                 <p>{{product.price}}</p>
-                <button class="btn btn-info"><i class="fa fa-shopping-cart"></i> Giỏ hảng</button>
+                <button class="btn btn-info" ng-click="themgiohang(product.id)"><i class="fa fa-shopping-cart"></i> Giỏ hảng</button>
             </div>
         </div>
     </div>
 
 
-    <h2>
+    @*<h2>
         Bài viết
     </h2>
     <hr />
@@ -135,7 +136,7 @@
                 <p>{{product.price}}</p>
             </div>
         </div>
-    </div>
-
-
+    </div>*@
 </div>
+
+@Html.Partial("_gio_hang_modal")

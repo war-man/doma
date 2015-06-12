@@ -50,6 +50,9 @@ E:\6. My Project\net\doma\trunk\doma\bin\Microsoft.Owin.Security.OAuth.xml
 E:\6. My Project\net\doma\trunk\doma\bin\Microsoft.Owin.Security.Google.xml
 E:\6. My Project\net\doma\trunk\doma\bin\Microsoft.Owin.Security.Twitter.xml
 E:\6. My Project\net\doma\trunk\doma\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-E:\6. My Project\net\doma\trunk\doma\obj\Debug\doma.csprojResolveAssemblyReference.cache
 E:\6. My Project\net\doma\trunk\doma\obj\Debug\doma.dll
 E:\6. My Project\net\doma\trunk\doma\obj\Debug\doma.pdb
+E:\6. My Project\net\doma\trunk\doma\obj\Debug\doma.csprojResolveAssemblyReference.cache
+E:\6. My Project\net\doma\trunk\doma\obj\Debug\doma.Migrations.Init.resources
+E:\6. My Project\net\doma\trunk\doma\obj\Debug\doma.csproj.GenerateResource.Cache
+E:\6. My Project\net\doma\trunk\doma\obj\Debug\doma.Migrations.m1.resources

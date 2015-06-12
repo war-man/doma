@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="751f7ad031c84363931640098f45d5fe" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjectDMModel.ChiTietDonHang" Width="1.5" PointX="4.125" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDMModel.DonHang" Width="1.5" PointX="2.375" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDMModel.SanPham" Width="1.5" PointX="5.875" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectDMModel.sysdiagram" Width="1.5" PointX="9.25" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="ProjectDMModel.FK_ChiTietDonHang_DonHang" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectDMModel.FK_ChiTietDonHang_SanPham" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProjectDMModel.C__MigrationHistory" Width="1.5" PointX="7.5" PointY="0.5" />
+        <EntityTypeShape EntityType="ProjectDMModel.AspNetRole" Width="1.5" PointX="6.375" PointY="6.625" />
+        <EntityTypeShape EntityType="ProjectDMModel.AspNetUserClaim" Width="1.5" PointX="2.375" PointY="6.875" />
+        <EntityTypeShape EntityType="ProjectDMModel.AspNetUserLogin" Width="1.5" PointX="2.375" PointY="4.875" />
+        <EntityTypeShape EntityType="ProjectDMModel.AspNetUser" Width="1.5" PointX="4.5" PointY="4.875" />
+        <AssociationConnector Association="ProjectDMModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" />
+        <AssociationConnector Association="ProjectDMModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ProjectDMModel.FK_DonHang_AspNetUsers" />
+        <AssociationConnector Association="ProjectDMModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

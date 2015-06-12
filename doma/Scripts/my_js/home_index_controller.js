@@ -1,42 +1,65 @@
-﻿app.controller('home_index_controller', ['$scope', '$scope', '$rootScope',
-    function ($scope, $scope, $rootScope) {
+﻿app.controller('home_index_controller', ['$scope', '$scope', '$rootScope','$http', 'my_function_services',
+    function ($scope, $scope, $rootScope,$http, my_function_services) {
         $scope.products = [];
 
         $scope.init = function()
         {
+            $http.get("../../home/getallproducts").success(function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    $scope.addproduct(data[i]);
+                }
+            })
+            .error(function () {
+                alert("Lỗi!");
+            })         
+        }
+
+        $scope.addproduct = function (sanpham) {
             var item = {};
-            item.img = "../../content/my_img/anh1.jpg";
-            item.name = "sản phẩm 1";
-            item.price = "49.000";
-            item.id = 1;
+            item.img = my_function_services.pasreimg(sanpham.linkanh)[1];
+            item.name = sanpham.Ten;
+            item.price = sanpham.DonGia;
+            item.id = sanpham.ID;
             $scope.products.push(item);
-
-            var item2 = {};
-            item2.img = "../../content/my_img/anh1.jpg";
-            item2.name = "sản phẩm 2";
-            item2.price = "109.000";
-            item2.id = 2;
-            $scope.products.push(item2);
-
-            var item3 = {};
-            item3.img = "../../content/my_img/anh1.jpg";
-            item3.name = "sản phẩm 3";
-            item3.price = "79.000";
-            item3.id = 3;
-            $scope.products.push(item3);
-
-            var item4 = {};
-            item4.img = "../../content/my_img/anh1.jpg";
-            item4.name = "sản phẩm 4";
-            item4.price = "39.000";
-            item4.id = 4;
-            $scope.products.push(item4);
-
         }
 
-        $scope.addproduct = function (item) {
+        $scope.themgiohang = function(id)
+        {
+            $rootScope.$broadcast('them_gio_hang_modal_controller::show', id);
+           
+        }
+    }]);
 
+app.controller('them_gio_hang_modal_controller', ['$scope', '$scope', '$rootScope', '$http', 'my_function_services',
+    function ($scope, $scope, $rootScope, $http, my_function_services) {
+        $scope.product = {};
+
+        $scope.themvaogiohang = function () {
+            $scope.product = {};
         }
 
-        $scope.init();
+        $scope.huy = function () {
+            $scope.product = {};
+        }       
+
+        $rootScope.$on('them_gio_hang_modal_controller::show', function (event, id) {
+
+            $http.get("../../home/getproductinfor?id=" + id).success(function (data) {
+                if (data)
+                {
+                    $scope.product.name = data.Ten;
+                    $scope.product.price = data.DonGia;
+                    $scope.product.detail = data.MoTa;
+                    $scope.product.number = 1;
+
+                    $("ThemVaoGioHang_Modal").modal('show');
+                }
+                
+            })
+            .error(function () {
+                alert("Lỗi!");
+            })
+
+            
+        })
     }]);

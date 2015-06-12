@@ -1,0 +1,29 @@
+﻿<!-- Create Game -->
+<div class="modal fade" id="ThemVaoGioHang_Modal" ng-controller="them_gio_hang_modal_controller as controller">
+    <div class="modal-dialog" ng-model="product">
+        <div class="modal-content">
+            <div class="modal-header">
+                {{product.name}}
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <img ng-src="{{product.img}}" class="img-box" />
+                    </div>
+                    <div class="col-xs-7">
+                        <p>Đơn giá: {{product.price}}</p>
+                        <div class="input-group">
+                            <label>Số lượng</label>
+                            <input type="number" class="form-control" ng-model="product.number"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="themvaogiohang()" data-dismiss="modal">Thêm vào giỏ hàng</button>
+                <button type="button" class="btn btn-warning" ng-click="huy()" data-dismiss="modal">Thôi</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
