@@ -56,3 +56,8 @@ E:\6. My Project\net\doma\trunk\doma\obj\Debug\doma.csprojResolveAssemblyReferen
 E:\6. My Project\net\doma\trunk\doma\obj\Debug\doma.Migrations.Init.resources
 E:\6. My Project\net\doma\trunk\doma\obj\Debug\doma.csproj.GenerateResource.Cache
 E:\6. My Project\net\doma\trunk\doma\obj\Debug\doma.Migrations.m1.resources
+E:\6. My Project\net\doma\trunk\doma\bin\System.Net.Http.Formatting.dll
+E:\6. My Project\net\doma\trunk\doma\bin\System.Web.Cors.dll
+E:\6. My Project\net\doma\trunk\doma\bin\System.Web.Http.dll
+E:\6. My Project\net\doma\trunk\doma\bin\System.Net.Http.Formatting.xml
+E:\6. My Project\net\doma\trunk\doma\bin\System.Web.Http.xml

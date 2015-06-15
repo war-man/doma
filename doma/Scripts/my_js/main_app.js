@@ -4,20 +4,25 @@ app.service('my_function_services', function () {
    
     var pasreimg = function(text)
     {
+        var count = 0;
         var imgs = [];
-        var item = "";
+        var item = {};
+        item.link = "";
         for (var i = 0; i < text.length; i++)
         {
             if(text[i] != ' ')
             {
-                item = item + text[i];
+                item.link = item.link + text[i];
             }
             else {
+                item.number = count;         
                 imgs.push(item);
-                item = "";
+                item = {};
+                item.link = "";
+                count += 1;
             }
         }
-
+        item.number = count;
         imgs.push(item);
         return imgs;
     }
@@ -26,28 +31,30 @@ app.service('my_function_services', function () {
     }
 })
 
-app.service('gio_hang_service', function () {
+app.service('cart_service', function () {
 
-    var pasreimg = function (text) {
-        var imgs = [];
-        var item = "";
-        for (var i = 0; i < text.length; i++) {
-            if (text[i] != ' ') {
-                item = item + text[i];
-            }
-            else {
-                imgs.push(item);
-                item = "";
-            }
-        }
-        imgs.push(item);
-        return imgs;
+    var cart = [];
+
+    var add_product_to_cart = function (product) {
+        cart.push(product);
+        send_to_server();
+    }
+
+    var send_to_server = function () {
+        localStorage['cart'] = cart;
     }
 
     var init = function () {
+        cart = localStorage['cart'];
+    }
+
+    var getcart = function () {
+        return cart;
     }
     return {
-        pasreimg: pasreimg,
-        init: init
+        add_product_to_cart: add_product_to_cart,
+        init: init,
+        send_to_server: send_to_server,
+        getcart: getcart
     }
 })
