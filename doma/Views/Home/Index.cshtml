@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<script src="~/scripts/my_js/home_index_controller.js"></script>
+
 
 <div ng-controller="home_index_controller" class="row" ng-init="init()">
     <div class="row">
@@ -115,10 +115,10 @@
             <div class="box-footer" style="text-align:center;">
                 <p>{{product.name}}</p>
                 <p>{{product.price}}</p>
-                <button class="btn btn-info" ng-click="themgiohang(product.id)"><i class="fa fa-shopping-cart"></i> Giỏ hảng</button>
+                <button class="btn btn-info" ng-click="themgiohang(product.id)"><i class="fa fa-cart-arrow-down"></i> Thêm vào giỏ hảng</button>
             </div>
         </div>
     </div>
 </div>
 
-@Html.Partial("_gio_hang_modal")
+

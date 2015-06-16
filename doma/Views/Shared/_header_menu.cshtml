@@ -1,6 +1,6 @@
 ﻿<header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo"><b>Admin</b>LTE</a>
+    <a href="../../Home" class="logo"><b>Admin</b>LTE</a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
@@ -20,10 +20,10 @@
                         <li>
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
-                                <li ng-repeat="item in products">
+                                <li ng-repeat="item in products track by item.id" style="cursor: pointer;" ng-click="changeitem(item.id)">
                                     <a>
                                         <div class="pull-left">
-                                            <img src="../../content/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
+                                            <img ng-src="{{item.imgs[0].link}}" alt="User Image" />
                                         </div>
                                         <h4>
                                             {{item.name}}
@@ -33,7 +33,7 @@
                                 </li><!-- end message -->                               
                             </ul>
                         </li>
-                        <li class="footer"><a href="#">Thanh toán</a></li>
+                        <li class="footer" ng-click="checkoutcart()"><a href="#">Thanh toán, quản lý giỏ hàng</a></li>
                     </ul>
                 </li>
 
@@ -79,3 +79,4 @@
         </div>
     </nav>
 </header>
+<script src="~/scripts/my_js/cart_controller.js"></script>

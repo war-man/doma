@@ -173,6 +173,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -784,6 +785,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\angular-cookies.min.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -819,6 +821,7 @@
       <DependentUpon>DBModal.edmx</DependentUpon>
       <LastGenOutput>DBModal.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\angular-cookies.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -828,6 +831,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\my_js\cart_controller.js" />
+    <Content Include="Scripts\my_js\cart_index_controller.js" />
     <Content Include="Scripts\my_js\home_index_controller.js" />
     <Content Include="Scripts\my_js\main_app.js" />
     <Content Include="Scripts\respond.js" />
@@ -863,7 +868,9 @@
     <Content Include="Views\Shared\_header_menu.cshtml" />
     <Content Include="Views\Shared\_main_sidebar.cshtml" />
     <Content Include="Views\Shared\_footer.cshtml" />
-    <Content Include="Views\Home\_gio_hang_modal.cshtml" />
+    <Content Include="Views\Shared\_gio_hang_modal.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\thongtin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

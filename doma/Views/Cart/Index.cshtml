@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/scripts/my_js/cart_index_controller.js"></script>
+
+<div class="row">
+    <div class="box box-info" ng-controller="cart_index_controller" ng-init="init()">
+        <div class="box-header">Giỏ hàng của bạn</div>
+
+        <div class="box-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Tên</td>
+                        <td>Hình ảnh</td>
+                        <td>Đơn giá</td>
+                        <td>Số lượng</td>
+                        <td>Thành tiền</td>
+                        <td>Xóa</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="product in products track by product.id" style="cursor:pointer;" ng-click="chooseproduct(product.id)">
+                        <td>{{product.id}}</td>
+                        <td>{{product.name}}</td>
+                        <td><img ng-src="{{product.imgs[0].link}}" style="  width: 50px;" /></td>
+                        <td>{{product.price | number}} VNĐ</td>
+                        <td>{{product.number | number}}</td>
+                        <td>{{product.number * product.price | number}} VNĐ</td>
+                        <td><button class="btn btn-warning" ng-click="deleteproduct(product.id)">Xóa</button></td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td>Tổng tiền</td>
+                        <td>{{totalamount | number}} VNĐ</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="box-footer clearfix">
+
+            <button style="float:right;" class="btn btn-success" ng-click="muahang()">Mua hàng</button>
+            <button style="float:left;" class="btn btn-warning" ng-click="back()">Trở lại</button>
+        </div>
+    </div>
+
+</div>
+
