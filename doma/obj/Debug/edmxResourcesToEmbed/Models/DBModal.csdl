@@ -22,6 +22,7 @@
     <Property Name="TinhTrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK_ChiTietDonHang_DonHang" FromRole="DonHang" ToRole="ChiTietDonHang" />
     <NavigationProperty Name="AspNetUser" Relationship="ProjectDMModel.FK_DonHang_AspNetUsers" FromRole="DonHang" ToRole="AspNetUser" />
+    <Property Name="SoDienThoai" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="SanPham">
     <Key>
@@ -158,6 +159,7 @@
     <NavigationProperty Name="AspNetUserLogins" Relationship="ProjectDMModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
     <NavigationProperty Name="DonHangs" Relationship="ProjectDMModel.FK_DonHang_AspNetUsers" FromRole="AspNetUser" ToRole="DonHang" />
     <NavigationProperty Name="AspNetRoles" Relationship="ProjectDMModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+    <Property Name="avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
     <End Type="ProjectDMModel.AspNetUser" Role="AspNetUser" Multiplicity="1">

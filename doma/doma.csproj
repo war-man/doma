@@ -186,6 +186,10 @@
     <Compile Include="Migrations\201506120820311_m1.Designer.cs">
       <DependentUpon>201506120820311_m1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506170817530_add-avatar.cs" />
+    <Compile Include="Migrations\201506170817530_add-avatar.Designer.cs">
+      <DependentUpon>201506170817530_add-avatar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetRole.cs">
@@ -225,6 +229,7 @@
       <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\MyModels.cs" />
     <Compile Include="Models\SanPham.cs">
       <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
@@ -235,12 +240,16 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap\css\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.css.map" />
     <Content Include="Content\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap\js\bootstrap-datetimepicker.min.js" />
     <Content Include="Content\bootstrap\js\bootstrap.js" />
     <Content Include="Content\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\bootstrap\js\npm.js" />
+    <Content Include="Content\defaultavatar.png" />
     <Content Include="Content\dist\css\AdminLTE.css" />
     <Content Include="Content\dist\css\AdminLTE.min.css" />
     <Content Include="Content\dist\css\skins\skin-black.css" />
@@ -789,7 +798,6 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\bootstrap\css\bootstrap.css.map" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\bootstrap\fonts\glyphicons-halflings-regular.woff" />
@@ -864,13 +872,13 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_header_menu.cshtml" />
     <Content Include="Views\Shared\_main_sidebar.cshtml" />
     <Content Include="Views\Shared\_footer.cshtml" />
     <Content Include="Views\Shared\_gio_hang_modal.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\thongtin.cshtml" />
+    <Content Include="Views\Cart\xacnhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -891,6 +899,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506120820311_m1.resx">
       <DependentUpon>201506120820311_m1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506170817530_add-avatar.resx">
+      <DependentUpon>201506170817530_add-avatar.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

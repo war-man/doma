@@ -83,6 +83,19 @@ namespace doma.Controllers
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
+
+                    ProjectDMEntities db = new ProjectDMEntities();
+                    AspNetUser userinfor = db.AspNetUsers.SingleOrDefault(t => t.Id == user.Id);
+
+                    userinfor.HoTen = model.HoTen;
+                    userinfor.SoDienThoai = model.SoDienThoai;
+                    userinfor.DiaChi = model.DiaChi;
+                    userinfor.avatar = model.avatar;
+
+                    db.AspNetUsers.Add(userinfor);
+                    db.Entry(userinfor).State = System.Data.Entity.EntityState.Modified;
+                    await db.SaveChangesAsync();
+
                     return RedirectToAction("Index", "Home");
                 }
                 else

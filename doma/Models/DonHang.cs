@@ -24,6 +24,7 @@ namespace doma.Models
         public string DiaChiGiao { get; set; }
         public System.DateTime ThoiGianGiao { get; set; }
         public string TinhTrang { get; set; }
+        public string SoDienThoai { get; set; }
     
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }

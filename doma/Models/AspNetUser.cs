@@ -30,6 +30,7 @@ namespace doma.Models
         public string DiaChi { get; set; }
         public string SoDienThoai { get; set; }
         public string HoTen { get; set; }
+        public string avatar { get; set; }
     
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }

@@ -1,4 +1,8 @@
-﻿.box-img {
+﻿.box {
+    box-shadow: 5px 5px 5px #D7D7D7;
+      border: 2px solid #EAEAEA;
+}
+.box-img {
     box-shadow: 5px 5px 5px #D7D7D7;
       border-top: 3px solid #FFFFFF !important;
 }
@@ -6,4 +10,24 @@
 .img-box {
     width: 100%;
     max-width: 450px;
+}
+
+.box-header h2{
+      margin-top: 0px;
+}
+
+.box-header h1{
+      margin-top: 0px;
+}
+.box-header h3{
+      margin-top: 0px;
+}
+.box-header h4{
+      margin-top: 0px;
+}
+.box-header h3{
+      margin-top: 0px;
+}
+.box-header h5{
+      margin-top: 0px;
 }

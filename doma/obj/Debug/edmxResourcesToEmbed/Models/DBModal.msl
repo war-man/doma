@@ -13,6 +13,7 @@
     <EntitySetMapping Name="DonHangs">
       <EntityTypeMapping TypeName="ProjectDMModel.DonHang">
         <MappingFragment StoreEntitySet="DonHang">
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="DiaChiGiao" ColumnName="DiaChiGiao" />
@@ -83,6 +84,7 @@
     <EntitySetMapping Name="AspNetUsers">
       <EntityTypeMapping TypeName="ProjectDMModel.AspNetUser">
         <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
           <ScalarProperty Name="HoTen" ColumnName="HoTen" />
           <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />

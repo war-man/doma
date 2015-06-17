@@ -1,4 +1,5 @@
-﻿using System;
+﻿using doma.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace doma.Controllers
 {
     public class CartController : Controller
     {
+        ProjectDMEntities db = new ProjectDMEntities();
         //
         // GET: /Cart/
         public ActionResult Index()
@@ -20,5 +22,18 @@ namespace doma.Controllers
         {
             return View();
         }
-	}
+
+         [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]        
+        public ActionResult thongtin(ThongTinNguoiDungMuaHang model)
+        {
+            return RedirectToAction("xacnhan", model);
+        }
+
+        public ActionResult xacnhan(ThongTinNguoiDungMuaHang model)
+        {
+            return View(model);
+        }
+    }
 }
