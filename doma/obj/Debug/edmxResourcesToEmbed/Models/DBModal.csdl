@@ -19,10 +19,11 @@
     <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DiaChiGiao" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ThoiGianGiao" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="TinhTrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TinhTrang" Type="Int16" Nullable="false" />
     <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK_ChiTietDonHang_DonHang" FromRole="DonHang" ToRole="ChiTietDonHang" />
     <NavigationProperty Name="AspNetUser" Relationship="ProjectDMModel.FK_DonHang_AspNetUsers" FromRole="DonHang" ToRole="AspNetUser" />
     <Property Name="SoDienThoai" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="SanPham">
     <Key>

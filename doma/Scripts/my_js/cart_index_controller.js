@@ -30,7 +30,12 @@
         }
 
         $scope.muahang = function () {
-            $window.location.href = "/cart/thongtin";
+            if ($scope.products.length >= 1) {
+                $window.location.href = "/cart/thongtin";
+            }
+            else {
+                alert("Giỏ hàng trống! Bạn cần chọn sản phẩm trước");
+            }
         }
 
         $scope.back = function () {

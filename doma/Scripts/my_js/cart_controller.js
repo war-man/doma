@@ -15,5 +15,6 @@ app.controller('cart_controller', ['$scope', '$rootScope', '$http', '$window', '
             $rootScope.$broadcast('them_gio_hang_modal_controller::show', id);
         }
         cart_service.loadcart();
+        $scope.init();
     }]);
 

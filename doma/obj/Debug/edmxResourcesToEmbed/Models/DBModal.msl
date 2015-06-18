@@ -13,6 +13,7 @@
     <EntitySetMapping Name="DonHangs">
       <EntityTypeMapping TypeName="ProjectDMModel.DonHang">
         <MappingFragment StoreEntitySet="DonHang">
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
           <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />

@@ -1,5 +1,5 @@
-﻿@using Microsoft.AspNet.Identity
-@model doma.Models.ThongTinNguoiDungMuaHang
+﻿@model doma.Models.ThongTinNguoiDungMuaHang
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Thông tin";
 
@@ -21,7 +21,6 @@
             <div class="box-body">
 
                 @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
 
                 <div class="form-group">
                     <div class="col-md-3 control-label">
@@ -44,13 +43,10 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             @Html.TextBoxFor(m => m.SoDienThoai, new { @class = "form-control", @Value = @user.SoDienThoai })
-                            @Html.ValidationMessageFor(m => m.SoDienThoai)
                         </div>
-
-
+                        <p style="color:red;">@Html.ValidationMessageFor(m => m.SoDienThoai)</p>
                     </div>
                 </div>
-
                 <div class="form-group">
                     @Html.LabelFor(m => m.DiaChiGiao, new { @class = "col-md-3 control-label" })
                     <div class="col-md-9">
@@ -59,13 +55,10 @@
                                 <i class="fa  fa-map-marker"></i>
                             </div>
                             @Html.TextBoxFor(m => m.DiaChiGiao, new { @class = "form-control", @Value = @user.DiaChi })
-                            @Html.ValidationMessageFor(m => m.DiaChiGiao)
                         </div>
-
-
+                        <p style="color:red;">@Html.ValidationMessageFor(m => m.DiaChiGiao)</p>
                     </div>
                 </div>
-
                 <div class="form-group">
                     @Html.LabelFor(m => m.ThoiGianGiao, new { @class = "col-md-3 control-label" })
                     <div class="col-md-9">
@@ -74,10 +67,9 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-clock-o"></i>
                             </div>
-                            @Html.TextBoxFor(m => m.ThoiGianGiao, new { @class = "form-control", @id = "datetimepicker1" })
-                            @Html.ValidationMessageFor(m => m.ThoiGianGiao)
+                            @Html.TextBoxFor(m => m.ThoiGianGiao, new { @class = "form-control", @id = "datetimepicker1", @Value = DateTime.Now })
                         </div>
-
+                        <p style="color:red;">@Html.ValidationMessageFor(m => m.ThoiGianGiao)</p>
                     </div>
                 </div>
             </div>
@@ -91,14 +83,7 @@
 </div>
 <script type="text/javascript">
     $(function () {
-        $('#datetimepicker1').datetimepicker({
-            icons: {
-                time: "fa fa-clock-o",
-                date: "fa fa-calendar",
-                up: "fa fa-arrow-up",
-                down: "fa fa-arrow-down"
-            }
-        });
+        $('#datetimepicker1').datetimepicker('update', new Date());
     });
 
     function backtocart() {
@@ -108,5 +93,5 @@
     function continuesshoping() {
         $window.location.href = "../../home";
     }
-    
+
 </script>

@@ -841,6 +841,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\my_js\cart_controller.js" />
     <Content Include="Scripts\my_js\cart_index_controller.js" />
+    <Content Include="Scripts\my_js\cart_xacnhan_controller.js" />
     <Content Include="Scripts\my_js\home_index_controller.js" />
     <Content Include="Scripts\my_js\main_app.js" />
     <Content Include="Scripts\respond.js" />
@@ -879,6 +880,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\thongtin.cshtml" />
     <Content Include="Views\Cart\xacnhan.cshtml" />
+    <Content Include="Views\Cart\thankyou.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

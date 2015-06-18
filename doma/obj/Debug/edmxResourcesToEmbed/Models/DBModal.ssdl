@@ -71,12 +71,13 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="DiaChiGiao" Type="nvarchar" MaxLength="255" Nullable="false" />
     <Property Name="ThoiGianGiao" Type="datetime" Nullable="false" />
-    <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TinhTrang" Type="int" Nullable="false" />
     <Property Name="SoDienThoai" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="NgayTao" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="SanPham">
     <Key>
