@@ -83,5 +83,13 @@ namespace doma.Controllers
             ViewBag.ID = ID;
             return View();
         }
+
+        [Authorize]
+        public ActionResult history() 
+        {
+            string userid = User.Identity.GetUserId();
+            List<DonHang> donhang = db.DonHangs.Where(t => t.UserID == userid).ToList();
+            return View(donhang);        
+        }
     }
 }
