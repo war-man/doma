@@ -24,6 +24,8 @@ namespace doma.Models
         public int DioGia { get; set; }
         public string linkanh { get; set; }
         public string MoTa { get; set; }
+        public string TinhTrang { get; set; }
+        public Nullable<int> SoLuong { get; set; }
     
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
     }

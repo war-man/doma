@@ -1,4 +1,4 @@
-﻿1: Đạt hàng
-2: Đã gọi điện confirm 
-3: Đang gửi
-4: Đã gửi hàng
+﻿1: Đạt hàng: red
+2: Đã gọi điện confirm : green
+3: Đang gửi: blue
+4: Đã gửi hàng: gray

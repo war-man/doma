@@ -69,29 +69,15 @@
                                 </div>
                             </li>
 
-                            
+
                             @if (User.IsInRole("Admin"))
                             {
                                 <li class="user-body">
-                                <div class="col-xs-12 text-center">
-                                    <a href="../../admin" class="btn btn-default btn-flat">Quản lý</a>
-                                </div>
-                            </li>
-                                
-                                <!-- Menu Footer-->
-                                <li class="user-footer">
-                                    <p>Chức năng cho Admin</p>
-                                    <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Đơn hàng</a>
-                                    </div>
-                                    <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sản phẩm</a>
-                                    </div>
-                                    <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Bài viết</a>
+                                    <div class="col-xs-12 text-center">
+                                        <a href="../../admin" class="btn btn-default btn-flat">Quản lý website</a>
                                     </div>
                                 </li>
-                                <hr />
+
                             }
                             <!-- Menu Footer-->
                             <li class="user-footer">
@@ -101,8 +87,8 @@
                                 <div class="pull-right">
                                     @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                                     {
-                                    @Html.AntiForgeryToken()
-                                    <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-default btn-flat">Đăng xuất</a>
+                                        @Html.AntiForgeryToken()
+                                        <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-default btn-flat">Đăng xuất</a>
                                     }
                                 </div>
                             </li>

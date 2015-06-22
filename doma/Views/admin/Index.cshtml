@@ -1,11 +1,15 @@
 ﻿@{
     doma.Models.ProjectDMEntities db = new doma.Models.ProjectDMEntities();
 
-    int count_new = db.DonHangs.Where(t=>t.TinhTrang == 1).Count();
+    int count_new = db.DonHangs.Where(t => t.TinhTrang == 1).Count();
     int count_product = db.SanPhams.Count();
     int count_user = db.AspNetUsers.Count();
     int count_baiviet = 0;
-    
+
+    List<doma.Models.DonHang> _don_hang_moi = db.DonHangs.Where(t => t.TinhTrang == 1).ToList();
+    List<doma.Models.DonHang> _don_hang_da_goi = db.DonHangs.Where(t => t.TinhTrang == 2).ToList();
+    List<doma.Models.DonHang> _don_hang_dang_gui = db.DonHangs.Where(t => t.TinhTrang == 3).ToList();
+
     ViewBag.Title = "Quản trị";
 }
 
@@ -27,7 +31,7 @@
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>@count_product<sup style="font-size: 20px">%</sup></h3>
+                <h3>@count_product</h3>
                 <p>Sản phẩm</p>
             </div>
             <div class="icon">
@@ -72,49 +76,199 @@
     <div class="box-body">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab_1" data-toggle="tab">Tab 1</a></li>
-                <li><a href="#tab_2" data-toggle="tab">Tab 2</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        Dropdown <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                        <li role="presentation" class="divider"></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-                    </ul>
-                </li>
-                <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                <li class="active"><a href="#tab_orders" data-toggle="tab">Đơn hàng</a></li>
+                <li><a href="#tab_products" data-toggle="tab">Sản phẩm</a></li>
+                <li><a href="#tab_users" data-toggle="tab">Người dùng</a></li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane active" id="tab_1">
-                    <b>How to use:</b>
-                    <p>
-                        Exactly like the original bootstrap tabs except you should use
-                        the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.
-                    </p>
-                    A wonderful serenity has taken possession of my entire soul,
-                    like these sweet mornings of spring which I enjoy with my whole heart.
-                    I am alone, and feel the charm of existence in this spot,
-                    which was created for the bliss of souls like mine. I am so happy,
-                    my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
-                    that I neglect my talents. I should be incapable of drawing a single stroke
-                    at the present moment; and yet I feel that I never was a greater artist than now.
-                </div><!-- /.tab-pane -->
-                <div class="tab-pane" id="tab_2">
-                    The European languages are members of the same family. Their separate existence is a myth.
-                    For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                    in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                    new common language would be desirable: one could refuse to pay expensive translators. To
-                    achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                    words. If several languages coalesce, the grammar of the resulting language is more simple
-                    and regular than that of the individual languages.
-                </div><!-- /.tab-pane -->
+                <div class="tab-pane active" id="tab_orders">
+
+                    <h4>Đơn hàng mới đặt</h4>
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <td><strong>Mã đơn hàng</strong></td>
+                                <td><strong>Người đặt</strong></td>
+                                <td><strong>Ngày giao hàng</strong></td>
+                                <td><strong>Tình trạng</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (_don_hang_moi.Count > 0)
+                            {
+                                foreach (var item in _don_hang_moi)
+                                {
+                                    <tr style="cursor:pointer;" onclick="chitietdonhang(@item.ID)">
+                                        <td>@item.ID</td>
+                                        <td>@item.AspNetUser.HoTen</td>
+                                        <td>@item.ThoiGianGiao <strong style="color:red;"> còn @((int)(item.ThoiGianGiao - DateTime.Now).TotalDays) ngày</strong></td>
+                                        <td>
+                                            <span class="badge bg-red">Mới, đang đợi gọi xác nhận</span>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr><td colspan="4">Chưa có đơn hàng nào</td></tr>
+                            }
+                        </tbody>
+                        <tfoot></tfoot>
+                    </table>
+
+                    <hr />
+                    <h4>Đã gọi xác nhận và đang chuẩn hàng</h4>
+                    
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <td><strong>Mã đơn hàng</strong></td>
+                                <td><strong>Người đặt</strong></td>
+                                <td><strong>Thời gian đặt</strong></td>
+                                <td><strong>Tình trạng</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (_don_hang_da_goi.Count > 0)
+                            {
+                                foreach (var item in _don_hang_da_goi)
+                                {
+                                    <tr style="cursor:pointer;" onclick="chitietdonhang(@item.ID)">
+                                        <td>@item.ID</td>
+                                        <td>@item.AspNetUser.HoTen</td>
+                                        <td>@item.ThoiGianGiao <strong style="color:red;"> còn @((int)(item.ThoiGianGiao - DateTime.Now).TotalDays) ngày</td>
+                                        <td>
+                                            <span class="badge bg-green-active">Đã gọi và đang chuẩn bị hàng</span>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr><td colspan="4">Trống</td></tr>
+                            }
+                        </tbody>
+                        <tfoot></tfoot>
+                    </table>
+
+                    <hr />
+                    <h4>Đang giao</h4>
+                  
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <td><strong>Mã đơn hàng</strong></td>
+                                <td><strong>Người đặt</strong></td>
+                                <td><strong>Thời gian đặt</strong></td>
+                                <td><strong>Tình trạng</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (_don_hang_dang_gui.Count > 0)
+                            {
+                                foreach (var item in _don_hang_dang_gui)
+                                {
+                                    <tr style="cursor:pointer;" onclick="chitietdonhang(@item.ID)">
+                                        <td>@item.ID</td>
+                                        <td>@item.AspNetUser.HoTen</td>
+                                        <td>@item.ThoiGianGiao <strong style="color:red;"> còn @((int)(item.ThoiGianGiao - DateTime.Now).TotalDays) ngày</td>
+                                        <td>
+                                            <span class="badge bg-blue-active">Đang gửi đi</span>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr><td colspan="4">Trống</td></tr>
+                            }
+                        </tbody>
+                        <tfoot></tfoot>
+                    </table>
+
+                </div>
+                <!-- /.tab-pane -->
+
+                <div class="tab-pane" id="tab_products">
+                    <a class="btn btn-success" href="../../admin/addproduct">Thêm sản phẩm</a>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td><strong>Tên</strong></td>
+                                <td><strong>Đơn giá</strong></td>
+                                <td><strong>Hình ảnh</strong></td>
+                                <td><strong>Tình trạng</strong></td>
+                                <td><strong>Số lượng còn lại</strong></td>
+                                <td><strong>Chỉnh sửa</strong></td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in db.SanPhams)
+                            {
+                                <tr>
+                                    <td>@item.Ten</td>
+                                    <td>@item.DioGia</td>
+                                    <td>
+                                        <img src="" />
+                                    </td>
+                                    <td>@item.TinhTrang</td>
+                                    <td>@item.SoLuong</td>
+                                    <td>
+                                        <a href="../../admin/editproduct?id=@item.ID" class="btn btn-primary">Sửa</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.tab-pane -->
+
+                <div class="tab-pane" id="tab_users">
+
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <td>Ảnh</td>
+                                <td>Họ tên</td>
+                                <td>Số lượng đơn hàng</td>                             
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in db.AspNetUsers)
+                            {
+                                <tr onclick="user('@item.Id')" style="cursor: pointer;">
+                                    <td>
+                                        <img src="@item.avatar" style="width:25px;"/>
+                                    </td>
+                                    <td>@item.HoTen</td>
+                                    <td>
+                                        <span style="color:red;">@item.DonHangs.Where(t=>t.TinhTrang > 1).Count()</span> 
+                                        / 
+                                        <span style="color:blue;">@item.DonHangs.Count()</span>
+                                    </td>                                    
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                   
+                </div>
+                <!-- /.tab-pane -->
             </div><!-- /.tab-content -->
         </div>
     </div>
 
     <div class="box-footer"></div>
 </div>
+
+<script>
+    function chitietdonhang(id) {
+        window.location.href = "../../admin/chitietdonhang/" + id;
+    }
+
+    function user(id) {
+        window.location.href = "../../admin/userinfor/" + id;
+    }
+</script>

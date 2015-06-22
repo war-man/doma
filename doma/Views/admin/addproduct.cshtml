@@ -1,0 +1,83 @@
+﻿@model doma.Models.SanPham
+
+@{
+    ViewBag.Title = "addproduct";
+}
+
+<div class="box">
+    <div class="box-footer">
+        <span style="margin-right: 20px;">Quay lại </span>
+        <a class="btn btn-primary" href="../../admin">Admin</a>
+    </div>
+</div>
+
+<script src="~/scripts/my_js/admin_addproduct.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="box box-primary" ng-controller="admin_addproduct_controller">
+        <div class="box-header">
+            <h4>Thêm sản phẩm</h4>
+        </div>
+        <div class="box-body">
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Tên sản phẩm</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Ten, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Ten)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Đơn giá</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.DioGia, new { @type = "number", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DioGia)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Link ảnh</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.linkanh, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.linkanh)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Mô tả sản phẩm</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.MoTa, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MoTa)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Tình trạng</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.TinhTrang, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TinhTrang)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Số lượng sản xuất</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.SoLuong, new { @type = "number", @Value = 1, @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SoLuong)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            <input type="submit" value="Thêm mới" class="btn btn-success" />
+            <a class="btn btn-default" href="../../admin">Hủy</a>
+        </div>
+
+    </div>
+}
