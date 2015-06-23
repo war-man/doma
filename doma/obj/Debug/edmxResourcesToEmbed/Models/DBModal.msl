@@ -26,6 +26,8 @@
     <EntitySetMapping Name="SanPhams">
       <EntityTypeMapping TypeName="ProjectDMModel.SanPham">
         <MappingFragment StoreEntitySet="SanPham">
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Ten" ColumnName="Ten" />
@@ -105,5 +107,35 @@
         <ScalarProperty Name="Id" ColumnName="RoleId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="BaiViets">
+      <EntityTypeMapping TypeName="ProjectDMModel.BaiViet">
+        <MappingFragment StoreEntitySet="BaiViet">
+          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+          <ScalarProperty Name="linkHinh" ColumnName="linkHinh" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BoSanPhams">
+      <EntityTypeMapping TypeName="ProjectDMModel.BoSanPham">
+        <MappingFragment StoreEntitySet="BoSanPham">
+          <ScalarProperty Name="Mota" ColumnName="Mota" />
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietBoSanPhams">
+      <EntityTypeMapping TypeName="ProjectDMModel.ChiTietBoSanPham">
+        <MappingFragment StoreEntitySet="ChiTietBoSanPham">
+          <ScalarProperty Name="SoLuongThuongMua" ColumnName="SoLuongThuongMua" />
+          <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
+          <ScalarProperty Name="IDBoSanPham" ColumnName="IDBoSanPham" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

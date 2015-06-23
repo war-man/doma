@@ -35,6 +35,9 @@
     <Property Name="linkanh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK_ChiTietDonHang_SanPham" FromRole="SanPham" ToRole="ChiTietDonHang" />
     <Property Name="MoTa" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TinhTrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int32" />
+    <NavigationProperty Name="ChiTietBoSanPhams" Relationship="ProjectDMModel.FK_ChiTietBoSanPham_SanPham" FromRole="SanPham" ToRole="ChiTietBoSanPham" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -103,6 +106,17 @@
     <AssociationSet Name="AspNetUserRoles" Association="ProjectDMModel.AspNetUserRoles">
       <End Role="AspNetRole" EntitySet="AspNetRoles" />
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="BaiViets" EntityType="ProjectDMModel.BaiViet" />
+    <EntitySet Name="BoSanPhams" EntityType="ProjectDMModel.BoSanPham" />
+    <EntitySet Name="ChiTietBoSanPhams" EntityType="ProjectDMModel.ChiTietBoSanPham" />
+    <AssociationSet Name="FK_ChiTietBoSanPham_BoSanPham" Association="ProjectDMModel.FK_ChiTietBoSanPham_BoSanPham">
+      <End Role="BoSanPham" EntitySet="BoSanPhams" />
+      <End Role="ChiTietBoSanPham" EntitySet="ChiTietBoSanPhams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietBoSanPham_SanPham" Association="ProjectDMModel.FK_ChiTietBoSanPham_SanPham">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="ChiTietBoSanPham" EntitySet="ChiTietBoSanPhams" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="C__MigrationHistory">
@@ -205,5 +219,60 @@
   <Association Name="AspNetUserRoles">
     <End Type="ProjectDMModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
     <End Type="ProjectDMModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityType Name="BaiViet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TieuDe" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="linkHinh" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgayDang" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="BoSanPham">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Mota" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChiTietBoSanPhams" Relationship="ProjectDMModel.FK_ChiTietBoSanPham_BoSanPham" FromRole="BoSanPham" ToRole="ChiTietBoSanPham" />
+  </EntityType>
+  <EntityType Name="ChiTietBoSanPham">
+    <Key>
+      <PropertyRef Name="IDBoSanPham" />
+      <PropertyRef Name="IDSanPham" />
+    </Key>
+    <Property Name="IDBoSanPham" Type="Int32" Nullable="false" />
+    <Property Name="IDSanPham" Type="Int32" Nullable="false" />
+    <Property Name="SoLuongThuongMua" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BoSanPham" Relationship="ProjectDMModel.FK_ChiTietBoSanPham_BoSanPham" FromRole="ChiTietBoSanPham" ToRole="BoSanPham" />
+    <NavigationProperty Name="SanPham" Relationship="ProjectDMModel.FK_ChiTietBoSanPham_SanPham" FromRole="ChiTietBoSanPham" ToRole="SanPham" />
+  </EntityType>
+  <Association Name="FK_ChiTietBoSanPham_BoSanPham">
+    <End Type="ProjectDMModel.BoSanPham" Role="BoSanPham" Multiplicity="1" />
+    <End Type="ProjectDMModel.ChiTietBoSanPham" Role="ChiTietBoSanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BoSanPham">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChiTietBoSanPham">
+        <PropertyRef Name="IDBoSanPham" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietBoSanPham_SanPham">
+    <End Type="ProjectDMModel.SanPham" Role="SanPham" Multiplicity="1" />
+    <End Type="ProjectDMModel.ChiTietBoSanPham" Role="ChiTietBoSanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChiTietBoSanPham">
+        <PropertyRef Name="IDSanPham" />
+      </Dependent>
+    </ReferentialConstraint>
   </Association>
 </Schema>

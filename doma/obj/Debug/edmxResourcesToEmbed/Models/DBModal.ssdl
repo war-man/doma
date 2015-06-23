@@ -58,6 +58,34 @@
     <Property Name="HoTen" Type="nvarchar(max)" />
     <Property Name="avatar" Type="nvarchar(max)" />
   </EntityType>
+  <EntityType Name="BaiViet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TieuDe" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NoiDung" Type="ntext" Nullable="false" />
+    <Property Name="linkHinh" Type="ntext" Nullable="false" />
+    <Property Name="NgayDang" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BoSanPham">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NgayTao" Type="datetime" Nullable="false" />
+    <Property Name="Mota" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChiTietBoSanPham">
+    <Key>
+      <PropertyRef Name="IDBoSanPham" />
+      <PropertyRef Name="IDSanPham" />
+    </Key>
+    <Property Name="IDBoSanPham" Type="int" Nullable="false" />
+    <Property Name="IDSanPham" Type="int" Nullable="false" />
+    <Property Name="SoLuongThuongMua" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="ChiTietDonHang">
     <Key>
       <PropertyRef Name="IDDonHang" />
@@ -88,6 +116,8 @@
     <Property Name="DioGia" Type="int" Nullable="false" />
     <Property Name="linkanh" Type="ntext" Nullable="false" />
     <Property Name="MoTa" Type="ntext" Nullable="false" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" />
+    <Property Name="SoLuong" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -99,6 +129,30 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <Association Name="FK_ChiTietBoSanPham_BoSanPham">
+    <End Role="BoSanPham" Type="Self.BoSanPham" Multiplicity="1" />
+    <End Role="ChiTietBoSanPham" Type="Self.ChiTietBoSanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BoSanPham">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChiTietBoSanPham">
+        <PropertyRef Name="IDBoSanPham" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietBoSanPham_SanPham">
+    <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
+    <End Role="ChiTietBoSanPham" Type="Self.ChiTietBoSanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChiTietBoSanPham">
+        <PropertyRef Name="IDSanPham" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ChiTietDonHang_DonHang">
     <End Role="DonHang" Type="Self.DonHang" Multiplicity="1" />
     <End Role="ChiTietDonHang" Type="Self.ChiTietDonHang" Multiplicity="*" />
@@ -198,10 +252,21 @@
     <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BaiViet" EntityType="Self.BaiViet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BoSanPham" EntityType="Self.BoSanPham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChiTietBoSanPham" EntityType="Self.ChiTietBoSanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietDonHang" EntityType="Self.ChiTietDonHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ChiTietBoSanPham_BoSanPham" Association="Self.FK_ChiTietBoSanPham_BoSanPham">
+      <End Role="BoSanPham" EntitySet="BoSanPham" />
+      <End Role="ChiTietBoSanPham" EntitySet="ChiTietBoSanPham" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietBoSanPham_SanPham" Association="Self.FK_ChiTietBoSanPham_SanPham">
+      <End Role="SanPham" EntitySet="SanPham" />
+      <End Role="ChiTietBoSanPham" EntitySet="ChiTietBoSanPham" />
+    </AssociationSet>
     <AssociationSet Name="FK_ChiTietDonHang_DonHang" Association="Self.FK_ChiTietDonHang_DonHang">
       <End Role="DonHang" EntitySet="DonHang" />
       <End Role="ChiTietDonHang" EntitySet="ChiTietDonHang" />

@@ -78,6 +78,7 @@
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab_orders" data-toggle="tab">Đơn hàng</a></li>
                 <li><a href="#tab_products" data-toggle="tab">Sản phẩm</a></li>
+                <li><a href="#tab_bosanpham" data-toggle="tab">Bộ Sản phẩm</a></li>
                 <li><a href="#tab_users" data-toggle="tab">Người dùng</a></li>
             </ul>
             <div class="tab-content">
@@ -118,7 +119,7 @@
 
                     <hr />
                     <h4>Đã gọi xác nhận và đang chuẩn hàng</h4>
-                    
+
                     <table class="table table-hover table-bordered">
                         <thead>
                             <tr>
@@ -153,7 +154,7 @@
 
                     <hr />
                     <h4>Đang giao</h4>
-                  
+
                     <table class="table table-hover table-bordered">
                         <thead>
                             <tr>
@@ -224,6 +225,35 @@
                 </div>
                 <!-- /.tab-pane -->
 
+                <div class="tab-pane" id="tab_bosanpham">
+                    <a class="btn btn-success" href="../../admin/addgroupproduct">Thêm bộ sản phẩm</a>
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <td>ID</td>
+                                <td>Tên bộ sản phẩm</td>
+                                <td>Số lượng sản phẩm</td>
+                                <td>Mô tả</td>
+                                <td>Ngày tạo</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in db.BoSanPhams)
+                            {
+                                <tr style="cursor: pointer;" onclick="editgroupproduct(@item.ID)">
+                                    <td>@item.ID</td>
+                                    <td>@item.Ten</td>
+                                    <td>@item.ChiTietBoSanPhams.Count()</td>
+                                    <td>@item.Mota</td>
+                                    <td>@item.NgayTao</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+                </div>
                 <div class="tab-pane" id="tab_users">
 
                     <table class="table table-hover table-bordered">
@@ -231,7 +261,7 @@
                             <tr>
                                 <td>Ảnh</td>
                                 <td>Họ tên</td>
-                                <td>Số lượng đơn hàng</td>                             
+                                <td>Số lượng đơn hàng</td>
                             </tr>
                         </thead>
 
@@ -240,20 +270,20 @@
                             {
                                 <tr onclick="user('@item.Id')" style="cursor: pointer;">
                                     <td>
-                                        <img src="@item.avatar" style="width:25px;"/>
+                                        <img src="@item.avatar" style="width:25px;" />
                                     </td>
                                     <td>@item.HoTen</td>
                                     <td>
-                                        <span style="color:red;">@item.DonHangs.Where(t=>t.TinhTrang > 1).Count()</span> 
-                                        / 
+                                        <span style="color:red;">@item.DonHangs.Where(t => t.TinhTrang > 1).Count()</span>
+                                        /
                                         <span style="color:blue;">@item.DonHangs.Count()</span>
-                                    </td>                                    
+                                    </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
 
-                   
+
                 </div>
                 <!-- /.tab-pane -->
             </div><!-- /.tab-content -->
@@ -270,5 +300,9 @@
 
     function user(id) {
         window.location.href = "../../admin/userinfor/" + id;
+    }
+
+    function editgroupproduct(id) {
+        window.location.href = "../../admin/editgroupproduct/" + id;
     }
 </script>

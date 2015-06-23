@@ -34,5 +34,8 @@ namespace doma.Models
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<BaiViet> BaiViets { get; set; }
+        public virtual DbSet<BoSanPham> BoSanPhams { get; set; }
+        public virtual DbSet<ChiTietBoSanPham> ChiTietBoSanPhams { get; set; }
     }
 }

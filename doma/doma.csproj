@@ -205,6 +205,15 @@
     <Compile Include="Models\AspNetUserLogin.cs">
       <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BaiViet.cs">
+      <DependentUpon>DBModal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BoSanPham.cs">
+      <DependentUpon>DBModal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietBoSanPham.cs">
+      <DependentUpon>DBModal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ChiTietDonHang.cs">
       <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
@@ -840,6 +849,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\my_js\admin\editgroupproduct_controller.js" />
+    <Content Include="Scripts\my_js\admin\addgroupproduct_controller.js" />
     <Content Include="Scripts\my_js\admin_addproduct.js" />
     <Content Include="Scripts\my_js\cart_controller.js" />
     <Content Include="Scripts\my_js\cart_index_controller.js" />
@@ -890,6 +901,8 @@
     <Content Include="Views\admin\editproduct.cshtml" />
     <Content Include="Views\admin\chitietdonhang.cshtml" />
     <Content Include="Views\admin\userinfor.cshtml" />
+    <Content Include="Views\admin\addgroupproduct.cshtml" />
+    <Content Include="Views\admin\editgroupproduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

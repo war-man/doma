@@ -12,23 +12,18 @@ namespace doma.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SanPham
+    public partial class BoSanPham
     {
-        public SanPham()
+        public BoSanPham()
         {
-            this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
             this.ChiTietBoSanPhams = new HashSet<ChiTietBoSanPham>();
         }
     
         public int ID { get; set; }
         public string Ten { get; set; }
-        public int DioGia { get; set; }
-        public string linkanh { get; set; }
-        public string MoTa { get; set; }
-        public string TinhTrang { get; set; }
-        public Nullable<int> SoLuong { get; set; }
+        public System.DateTime NgayTao { get; set; }
+        public string Mota { get; set; }
     
-        public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
         public virtual ICollection<ChiTietBoSanPham> ChiTietBoSanPhams { get; set; }
     }
 }
