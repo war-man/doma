@@ -26,6 +26,7 @@ namespace doma.Models
         public short TinhTrang { get; set; }
         public string SoDienThoai { get; set; }
         public System.DateTime NgayTao { get; set; }
+        public string Comment { get; set; }
     
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }

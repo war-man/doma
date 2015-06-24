@@ -94,6 +94,7 @@
     <Property Name="IDDonHang" Type="int" Nullable="false" />
     <Property Name="IDSanPham" Type="int" Nullable="false" />
     <Property Name="SoLuong" Type="int" Nullable="false" />
+    <Property Name="IDBoSanPham" Type="int" />
   </EntityType>
   <EntityType Name="DonHang">
     <Key>
@@ -106,6 +107,7 @@
     <Property Name="TinhTrang" Type="int" Nullable="false" />
     <Property Name="SoDienThoai" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="NgayTao" Type="datetime" Nullable="false" />
+    <Property Name="Comment" Type="ntext" />
   </EntityType>
   <EntityType Name="SanPham">
     <Key>

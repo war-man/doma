@@ -10,6 +10,7 @@
     <Property Name="SoLuong" Type="Int32" Nullable="false" />
     <NavigationProperty Name="DonHang" Relationship="Self.FK_ChiTietDonHang_DonHang" FromRole="ChiTietDonHang" ToRole="DonHang" />
     <NavigationProperty Name="SanPham" Relationship="Self.FK_ChiTietDonHang_SanPham" FromRole="ChiTietDonHang" ToRole="SanPham" />
+    <Property Name="IDBoSanPham" Type="Int32" />
   </EntityType>
   <EntityType Name="DonHang">
     <Key>
@@ -24,6 +25,7 @@
     <NavigationProperty Name="AspNetUser" Relationship="ProjectDMModel.FK_DonHang_AspNetUsers" FromRole="DonHang" ToRole="AspNetUser" />
     <Property Name="SoDienThoai" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="SanPham">
     <Key>

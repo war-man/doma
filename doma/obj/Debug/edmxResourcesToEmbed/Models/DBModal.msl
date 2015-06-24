@@ -4,6 +4,7 @@
     <EntitySetMapping Name="ChiTietDonHangs">
       <EntityTypeMapping TypeName="ProjectDMModel.ChiTietDonHang">
         <MappingFragment StoreEntitySet="ChiTietDonHang">
+          <ScalarProperty Name="IDBoSanPham" ColumnName="IDBoSanPham" />
           <ScalarProperty Name="IDDonHang" ColumnName="IDDonHang" />
           <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
@@ -13,6 +14,7 @@
     <EntitySetMapping Name="DonHangs">
       <EntityTypeMapping TypeName="ProjectDMModel.DonHang">
         <MappingFragment StoreEntitySet="DonHang">
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
           <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
           <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
           <ScalarProperty Name="ID" ColumnName="ID" />

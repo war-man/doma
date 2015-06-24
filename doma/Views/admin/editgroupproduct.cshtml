@@ -1,6 +1,5 @@
 ﻿@{
-    doma.Controllers.EditGroupProductModel item = (doma.Controllers.EditGroupProductModel)ViewBag.item;
-    ViewBag.Title = "editgroupproduct";
+    ViewBag.Title = "Sửa bộ sản phẩm";
 }
 <div class="box">
     <div class="box-footer">
@@ -9,9 +8,9 @@
     </div>
 </div>
 
-<script src="~/scripts/my_js/admin/addgroupproduct_controller.js"></script>
+<script src="~/scripts/my_js/admin/editgroupproduct_controller.js"></script>
 
-<div class="box box-info" ng-controller="addgroupproduct_controller" ng-init="init('@item.id',@item.products)">
+<div class="box box-info" ng-controller="editgroupproduct_controller" ng-init="init('@ViewBag.id')">
     <div class="box-header">
         <h3>Bộ sản phẩm</h3>
     </div>
@@ -21,14 +20,14 @@
             <div class="form-group">
                 <label class="control-label col-md-2">Tên bộ sản phẩm</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" ng-model="Ten" />                 
+                    <input type="text" class="form-control" ng-model="Ten"/>
                     <p style="color:red;">{{Tenmessage}}</p>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-2">Mô tả ngắn</label>
                 <div class="col-md-10">
-                    <input type="text" class="form-control" ng-model="Mota" />   
+                    <input type="text" class="form-control" ng-model="Mota"/>
                     <p style="color:red;">{{MoTaMessage}}</p>
                 </div>
             </div>
@@ -37,7 +36,7 @@
         <hr />
         <h4>Chi tiết bộ sản phẩm</h4>
         <div>
-            <a class="btn btn-success" ng-click="showmodal_allproduct()" style="float:right;">Thêm sản phẩm</a>
+            <a class="btn btn-warning" ng-click="showmodal_allproduct()">Thêm sản phẩm</a>
             <p style="color:red;">{{SanPhamMessage}} </p>
             <table class="table table-bordered table-hover">
                 <thead>
@@ -71,8 +70,10 @@
         </div>
     </div>
     <div class="box-footer">
-        <input type="button" ng-click="finish()" value="Thêm bộ sản phẩm" class="btn btn-success" />
+        <input type="button" ng-click="finish()" value="Sửa" class="btn btn-success" />
+       
         <a class="btn btn-default" href="../../admin" style="float:right;">Hủy</a>
+        <input type="button" ng-click="removegroupproduct()" value="Xóa" class="btn btn-warning" style="float: right; margin-right: 10px;" />
     </div>
 
 

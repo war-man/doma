@@ -2,6 +2,8 @@
     function ($scope, $scope, $rootScope, $http, my_function_services, cart_service) {
         $scope.products = [];
 
+        $scope.groupproducts = [];
+
         $scope.init = function () {
             $http.get("../../home/getallproducts").success(function (data) {
                 for (var i = 0; i < data.length; i++) {
@@ -11,6 +13,15 @@
             .error(function () {
                 alert("Lỗi!");
             })
+
+            $http.get("../../home/getallgroupproducts").success(function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    $scope.addgrouproduct(data[i]);
+                }
+            })
+           .error(function () {
+               alert("Lỗi!");
+           })
         }
 
         $scope.addproduct = function (sanpham) {
@@ -23,8 +34,20 @@
             $scope.products.push(item);
         }
 
-        $scope.themgiohang = function (id) {
-            $rootScope.$broadcast('them_gio_hang_modal_controller::show', id);
+        $scope.addgrouproduct = function (sanpham) {
+            var item = {};
+            item.img = my_function_services.pasreimg(sanpham.img)[0].link;
+            item.name = sanpham.Ten;
+            item.id = sanpham.id;
+            $scope.groupproducts.push(item);
+        }
+
+        $scope.xemsanpham = function (id) {
+            $rootScope.$broadcast('xem_san_pham::show', id);
+        }
+
+        $scope.xembosanpham = function (id) {
+            $rootScope.$broadcast('xem_bo_san_pham::show', id);
         }
     }]);
 
@@ -42,7 +65,7 @@ app.controller('them_gio_hang_modal_controller', ['$scope', '$rootScope', '$http
             $scope.product = {};
         }
 
-        $rootScope.$on('them_gio_hang_modal_controller::show', function (event, id, number) {
+        $rootScope.$on('xem_san_pham::show', function (event, id, number) {
 
             $scope.product = cart_service.getitemincart(id);
             if ($scope.product == null)
@@ -52,6 +75,21 @@ app.controller('them_gio_hang_modal_controller', ['$scope', '$rootScope', '$http
 
             if (number)
             {
+                $scope.product.number = number;
+            }
+            if ($scope.product) {
+                $("#ThemVaoGioHang_Modal").modal('show');
+            }
+        })
+
+        $rootScope.$on('xem_bo_san_pham::show', function (event, id, number) {
+
+            $scope.product = cart_service.getitemincart(id);
+            if ($scope.product == null) {
+                $scope.product = my_function_services.getproductinfo(id);
+            }
+
+            if (number) {
                 $scope.product.number = number;
             }
             if ($scope.product) {

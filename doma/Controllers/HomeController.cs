@@ -32,6 +32,18 @@ namespace doma.Controllers
             return Json(sanphams, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult getallgroupproducts()
+        {
+            List<BoSanPhamIndexModal> sanphams = (from item in db.BoSanPhams.AsNoTracking()
+                                                  select new BoSanPhamIndexModal
+                                            {
+                                                Ten = item.Ten,
+                                                id = item.ID,
+                                                img = item.ChiTietBoSanPhams.FirstOrDefault().SanPham.linkanh
+                                            }).ToList();
+            return Json(sanphams, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult getproductinfor(int id)
         {
             SanPham item = db.SanPhams.SingleOrDefault(t => t.ID == id);
@@ -45,6 +57,37 @@ namespace doma.Controllers
                     MoTa = item.MoTa,
                     linkanh = item.linkanh
                 };
+                return Json(sanpham, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public ActionResult getgroupproductinfo(int id)
+        {
+            BoSanPham item = db.BoSanPhams.SingleOrDefault(t => t.ID == id);
+            if (item != null)
+            {
+                BoSanPhamInfoIndexModal sanpham = new BoSanPhamInfoIndexModal
+                {
+                    Ten = item.Ten,
+                    id = item.ID
+                };
+
+                List<ChiTietBoSanPham> chitiets = item.ChiTietBoSanPhams.ToList();
+
+                for (int i = 0; i < chitiets.Count; i++)
+                {
+                    SanPhamTrongBoSanPham pro = new SanPhamTrongBoSanPham();
+                    pro.ID = chitiets[i].IDSanPham;
+                    pro.linkanh = chitiets[i].SanPham.linkanh;
+                    pro.MoTa = chitiets[i].SanPham.MoTa;
+                    pro.Ten = chitiets[i].SanPham.Ten;
+
+                    sanpham.products.Add(pro);
+                }
                 return Json(sanpham, JsonRequestBehavior.AllowGet);
             }
             else
@@ -76,5 +119,31 @@ namespace doma.Controllers
         public int DonGia { get; set; }
         public string MoTa { get; set; }
         public string linkanh { get; set; }
+    }
+
+    public class BoSanPhamIndexModal
+    {
+        public string Ten { get; set; }
+        public int id { get; set; }
+        public string img { get; set; }
+    }
+
+
+    public class BoSanPhamInfoIndexModal
+    {
+        public string Ten { get; set; }
+        public int id { get; set; }
+        public List<SanPhamTrongBoSanPham> products { get; set; }
+    }
+
+    public class SanPhamTrongBoSanPham
+    {
+        public string Ten { get; set; }
+        public int ID { get; set; }
+        public int DonGia { get; set; }
+        public string MoTa { get; set; }
+        public string linkanh { get; set; }
+
+        public int GiaThuongMua { get; set; }
     }
 }

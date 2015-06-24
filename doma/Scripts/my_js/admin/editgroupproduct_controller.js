@@ -1,5 +1,5 @@
 ﻿
-app.controller('addgroupproduct_controller', ['$scope', '$rootScope', '$http', '$window', 'my_function_services', 'cart_service',
+app.controller('editgroupproduct_controller', ['$scope', '$rootScope', '$http', '$window', 'my_function_services', 'cart_service',
     function ($scope, $rootScope, $http, $window, my_function_services, cart_service) {
         $scope.Ten = "";
         $scope.Mota = "";
@@ -10,9 +10,22 @@ app.controller('addgroupproduct_controller', ['$scope', '$rootScope', '$http', '
         $scope.SanPhamMessage = "";
         $scope.id = "";
 
-        $scope.init = function(id, data)
+        $scope.init = function (id)
         {
-            alert(data.length);
+            $scope.id = id;
+            $http.get("../../admin/getGroupProduct/" + id).success(function (data) {
+                $scope.Ten = data.Ten;
+                $scope.Mota = data.Mota;
+               
+                for (var i = 0; i < data.products.length; i++) {
+                    var item = {};
+                    item.name = data.products[i].Ten;
+                    item.price = data.products[i].DioGia;
+                    item.id = data.products[i].id;
+                    item.number = data.products[i].number;
+                    $scope.products.push(item);
+                }
+            })
         }
 
         $scope.addproduct = function (product) {
@@ -104,9 +117,9 @@ app.controller('addgroupproduct_controller', ['$scope', '$rootScope', '$http', '
                 data.Ten = $scope.Ten;
                 data.Mota = $scope.Mota;
                 data.products = $scope.products;
-
+                data.id = $scope.id;
                 // Simple POST request example (passing data) :
-                $http.post('../../admin/addgroupproduct', { model: data }).
+                $http.post('../../admin/editgroupproduct', { model: data }).
                   success(function (data, status, headers, config) {
                       $window.location.href = "../../admin";
                   }).
@@ -114,5 +127,14 @@ app.controller('addgroupproduct_controller', ['$scope', '$rootScope', '$http', '
                       alert("Lỗi khi đăng tải");
                   });
             }
+        }
+
+
+        $scope.removegroupproduct = function () {
+            var confir = confirm("Bạn chắc chắn xóa bộ sản phẩm này?");
+            if (confir)
+            {
+                $window.location.href = "../../admin/removegroupproduct/" + $scope.id;
+            }           
         }
     }]);

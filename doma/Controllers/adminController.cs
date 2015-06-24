@@ -18,6 +18,9 @@ namespace doma.Controllers
             return View();
         }
 
+        //////////////////////////
+        /////// Product //////////
+        //////////////////////////
         public ActionResult addproduct()
         {
             return View();
@@ -76,12 +79,15 @@ namespace doma.Controllers
             }
         }
 
+        //////////////////////////
+        /////// Order //////////
+        //////////////////////////
         public ActionResult chitietdonhang(int id)
         {
             DonHang item = db.DonHangs.SingleOrDefault(t => t.ID == id);
 
             if (item != null)
-            {               
+            {
                 return View(item);
             }
             else
@@ -111,6 +117,22 @@ namespace doma.Controllers
         {
             AspNetUser user = db.AspNetUsers.SingleOrDefault(t => t.Id == id);
             return View(user);
+        }
+
+        //////////////////////////
+        /////// Group Product ////
+        //////////////////////////
+        public ActionResult removegroupproduct(int id)
+        {
+            BoSanPham item = db.BoSanPhams.SingleOrDefault(t => t.ID == id);
+            if (item != null)
+            {
+                db.ChiTietBoSanPhams.RemoveRange(item.ChiTietBoSanPhams);
+                db.BoSanPhams.Remove(item);
+                db.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult addgroupproduct()
@@ -146,26 +168,9 @@ namespace doma.Controllers
 
         public ActionResult editgroupproduct(int id)
         {
-            BoSanPham item = db.BoSanPhams.SingleOrDefault(t => t.ID == id);
-
-            if (item != null)
+            if (id != null)
             {
-                EditGroupProductModel model = new EditGroupProductModel();
-                model.id = item.ID;
-                model.Mota = item.Mota;
-                model.Ten = item.Ten;
-                model.products = new List<ItemInGroupProductModel>();
-                List<ChiTietBoSanPham> listpr = item.ChiTietBoSanPhams.ToList();
-                for (int i = 0; i < listpr.Count; i++)
-                {
-                    ItemInGroupProductModel prod = new ItemInGroupProductModel();
-                    prod.id = listpr[i].IDSanPham;
-                    prod.number = listpr[i].SoLuongThuongMua;
-
-                    model.products.Add(prod);
-                }
-
-                ViewBag.item = model;
+                ViewBag.id = id;
                 return View();
             }
             else
@@ -211,6 +216,40 @@ namespace doma.Controllers
 
             return HttpNotFound();
         }
+
+        
+
+        public ActionResult getGroupProduct(int id)
+        {
+            BoSanPham item = db.BoSanPhams.SingleOrDefault(t => t.ID == id);
+
+            if (item != null)
+            {
+                EditGroupProductModel model = new EditGroupProductModel();
+                model.id = item.ID;
+                model.Mota = item.Mota;
+                model.Ten = item.Ten;
+                model.products = new List<ProductInfo>();
+                List<ChiTietBoSanPham> listpr = item.ChiTietBoSanPhams.ToList();
+
+                for (int i = 0; i < listpr.Count; i++)
+                {
+                    ProductInfo prod = new ProductInfo();
+                    prod.id = listpr[i].IDSanPham;
+                    prod.number = listpr[i].SoLuongThuongMua;
+                    prod.Ten = listpr[i].SanPham.Ten;
+                    prod.DioGia = listpr[i].SanPham.DioGia;
+
+                    model.products.Add(prod);
+                }
+
+                return Json(model, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
     }
 
     public class AddGroupProductModel
@@ -231,6 +270,15 @@ namespace doma.Controllers
         public int id { get; set; }
         public string Ten { get; set; }
         public string Mota { get; set; }
-        public List<ItemInGroupProductModel> products { get; set; }
+        public List<ProductInfo> products { get; set; }
+    }
+
+    public class ProductInfo
+    {
+        public int id { get; set; }
+        public string Ten { get; set; }
+        public int DioGia { get; set; }
+
+        public int number { get; set; }
     }
 }

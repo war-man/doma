@@ -99,6 +99,7 @@
           <Property Name="IDDonHang" Type="int" Nullable="false" />
           <Property Name="IDSanPham" Type="int" Nullable="false" />
           <Property Name="SoLuong" Type="int" Nullable="false" />
+          <Property Name="IDBoSanPham" Type="int" />
         </EntityType>
         <EntityType Name="DonHang">
           <Key>
@@ -111,6 +112,7 @@
           <Property Name="TinhTrang" Type="int" Nullable="false" />
           <Property Name="SoDienThoai" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="NgayTao" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="ntext" />
         </EntityType>
         <EntityType Name="SanPham">
           <Key>
@@ -315,6 +317,7 @@
           <Property Name="SoLuong" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DonHang" Relationship="Self.FK_ChiTietDonHang_DonHang" FromRole="ChiTietDonHang" ToRole="DonHang" />
           <NavigationProperty Name="SanPham" Relationship="Self.FK_ChiTietDonHang_SanPham" FromRole="ChiTietDonHang" ToRole="SanPham" />
+          <Property Name="IDBoSanPham" Type="Int32" />
         </EntityType>
         <EntityType Name="DonHang">
           <Key>
@@ -329,6 +332,7 @@
           <NavigationProperty Name="AspNetUser" Relationship="ProjectDMModel.FK_DonHang_AspNetUsers" FromRole="DonHang" ToRole="AspNetUser" />
           <Property Name="SoDienThoai" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SanPham">
           <Key>
@@ -589,6 +593,7 @@
           <EntitySetMapping Name="ChiTietDonHangs">
             <EntityTypeMapping TypeName="ProjectDMModel.ChiTietDonHang">
               <MappingFragment StoreEntitySet="ChiTietDonHang">
+                <ScalarProperty Name="IDBoSanPham" ColumnName="IDBoSanPham" />
                 <ScalarProperty Name="IDDonHang" ColumnName="IDDonHang" />
                 <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
@@ -598,6 +603,7 @@
           <EntitySetMapping Name="DonHangs">
             <EntityTypeMapping TypeName="ProjectDMModel.DonHang">
               <MappingFragment StoreEntitySet="DonHang">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
                 <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
