@@ -855,7 +855,8 @@
     <Content Include="Scripts\my_js\cart_controller.js" />
     <Content Include="Scripts\my_js\cart_index_controller.js" />
     <Content Include="Scripts\my_js\cart_xacnhan_controller.js" />
-    <Content Include="Scripts\my_js\home_index_controller.js" />
+    <Content Include="Scripts\my_js\home\home_bosanpham_controller.js" />
+    <Content Include="Scripts\my_js\home\home_index_controller.js" />
     <Content Include="Scripts\my_js\main_app.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -903,6 +904,7 @@
     <Content Include="Views\admin\userinfor.cshtml" />
     <Content Include="Views\admin\addgroupproduct.cshtml" />
     <Content Include="Views\admin\editgroupproduct.cshtml" />
+    <Content Include="Views\Home\bosanpham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

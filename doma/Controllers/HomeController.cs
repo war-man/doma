@@ -110,6 +110,43 @@ namespace doma.Controllers
             return View();
         }
 
+        public ActionResult bosanpham(int id)
+        {
+            //BoSanPham sanpham = db.BoSanPhams.SingleOrDefault(t => t.ID == id);
+            //if(sanpham !=null)
+            //{
+            //    return View(sanpham);
+            //}
+            BoSanPham item = db.BoSanPhams.SingleOrDefault(t => t.ID == id);
+            if (item != null)
+            {
+                BoSanPhamInfoIndexModal sanpham = new BoSanPhamInfoIndexModal
+                {
+                    Ten = item.Ten,
+                    id = item.ID,
+                    Mota = item.Mota
+                };
+
+                List<ChiTietBoSanPham> chitiets = item.ChiTietBoSanPhams.ToList();
+                sanpham.products = new List<SanPhamTrongBoSanPham>();
+                for (int i = 0; i < chitiets.Count; i++)
+                {
+                    SanPhamTrongBoSanPham pro = new SanPhamTrongBoSanPham();
+                    pro.ID = chitiets[i].IDSanPham;
+                    pro.linkanh = chitiets[i].SanPham.linkanh;
+                    pro.MoTa = chitiets[i].SanPham.MoTa;
+                    pro.Ten = chitiets[i].SanPham.Ten;
+                    pro.GiaThuongMua = chitiets[i].SoLuongThuongMua;
+                    pro.DonGia = chitiets[i].SanPham.DioGia;
+
+                    sanpham.products.Add(pro);
+                }
+                return View(sanpham);
+            }
+
+            return HttpNotFound();
+        }
+
     }
 
     public class SanPhamReturn
@@ -133,6 +170,7 @@ namespace doma.Controllers
     {
         public string Ten { get; set; }
         public int id { get; set; }
+        public string Mota { get; set; }
         public List<SanPhamTrongBoSanPham> products { get; set; }
     }
 

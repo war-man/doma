@@ -53,7 +53,16 @@ app.service('cart_service', function ($window) {
 
     var cart = [];
 
-    var add_product_to_cart = function (product) {
+    var add_product_to_cart = function (product, idbosanpham) {
+        if (idbosanpham)
+        {
+            alert("co id bo san pham");
+            product.idbosanpham = idbosanpham;
+        }
+        else {
+            alert("KHONG co id bo san pham");
+            product.idbosanpham = -1;
+        }
         for (var i = 0; i < cart.length; i++) {
             if (cart[i].id == product.id) {
                 cart[i] = product;
