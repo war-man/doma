@@ -5,17 +5,19 @@
         $scope.id = "";
         $scope.products = [];
         $scope.count = 0;
+        $scope.ten = 0;
+
         $scope.init = function(sanpham)
         {
-            $scope.id = sanpham.ID;
-
+            $scope.id = sanpham.id;
+            $scope.ten = sanpham.Ten;
             for (var i = 0 ; i < sanpham.products.length; i++) {
                 var item = {};
-                item.ID = sanpham.products[i].ID;
-                item.Ten = sanpham.products[i].Ten;
-                item.DonGia = sanpham.products[i].DonGia;
-                item.soluong = sanpham.products[i].GiaThuongMua;
-                item.imgs = sanpham.products[i].linkanh;
+                item.id = sanpham.products[i].ID;
+                item.name = sanpham.products[i].Ten;
+                item.price = sanpham.products[i].DonGia;
+                item.number = sanpham.products[i].GiaThuongMua;
+                item.imgs = my_function_services.pasreimg(sanpham.products[i].linkanh);
               
                 var img = {};
                 img.number = $scope.count;
@@ -29,9 +31,8 @@
         }
 
         $scope.themvaogiohang = function () {
-            
             for (var i = 0; i < $scope.products.length; i++) {
-                cart_service.add_product_to_cart($scope.products[i], $scope.id);
+                cart_service.add_product_to_cart($scope.products[i], $scope.id, $scope.ten);
             }
             
             $rootScope.$broadcast('cart_index_controller::recount_amount');

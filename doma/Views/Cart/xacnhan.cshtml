@@ -58,6 +58,7 @@
                             <td>Đơn giá</td>
                             <td>Số lượng</td>
                             <td>Thành tiền</td>
+                            <td>Ghi chú</td>
                         </tr>
                     </thead>
 
@@ -68,6 +69,7 @@
                             <td>{{product.price | number}} VNĐ</td>
                             <td>{{product.number | number}}</td>
                             <td style="color:red;">{{product.number * product.price | number}} VNĐ</td>
+                            <td><small>{{product.comment}}</small></td>
                         </tr>
                     </tbody>
 

@@ -64,13 +64,13 @@
             <tbody>
 
                 <tr ng-repeat="sanpham in products">
-                    <td>{{sanpham.ID}}</td>
-                    <td>{{sanpham.Ten}}</td>                    
+                    <td>{{sanpham.id}}</td>
+                    <td>{{sanpham.name}}</td>                    
                     <td>
-                        <input type="number" class="form-control" ng-model="sanpham.soluong" />
+                        <input type="number" class="form-control" ng-model="sanpham.number" />
                     </td>
-                    <td style="color:red;">{{sanpham.DonGia | number}} VNĐ</td>
-                    <td style="color:red;">{{sanpham.soluong * sanpham.DonGia | number}} VNĐ</td>
+                    <td style="color:red;">{{sanpham.price | number}} VNĐ</td>
+                    <td style="color:red;">{{sanpham.number * sanpham.price | number}} VNĐ</td>
                 </tr>
 
             </tbody>

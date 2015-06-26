@@ -217,8 +217,6 @@ namespace doma.Controllers
             return HttpNotFound();
         }
 
-        
-
         public ActionResult getGroupProduct(int id)
         {
             BoSanPham item = db.BoSanPhams.SingleOrDefault(t => t.ID == id);
@@ -249,6 +247,72 @@ namespace doma.Controllers
             {
                 return HttpNotFound();
             }
+        }
+
+        //////////////////////////
+        /////// Bài viết ////
+        //////////////////////////
+        public ActionResult addbaiviet() 
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult addbaiviet(BaiViet model)
+        {
+            model.NgayDang = DateTime.Now;
+            if (ModelState.IsValid)
+            {
+                BaiViet item = db.BaiViets.Create();
+                item.linkHinh = model.linkHinh;
+                item.NgayDang = DateTime.Now;
+                item.NoiDung = model.NoiDung;
+                item.TieuDe = model.TieuDe;
+
+                db.BaiViets.Add(item);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        public ActionResult editbaiviet(int id)
+        {
+            BaiViet baiviet = db.BaiViets.SingleOrDefault(t => t.ID == id);
+            if(baiviet!= null)
+            {
+                return View(baiviet);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult editbaiviet(BaiViet model)
+        {
+            model.NgayDang = DateTime.Now;
+            if (ModelState.IsValid)
+            {               
+                db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        public ActionResult deletebaiviet(int id)
+        {
+            BaiViet baiviet = db.BaiViets.SingleOrDefault(t => t.ID == id);
+            if (baiviet != null)
+            {
+                db.BaiViets.Remove(baiviet);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
     }
 

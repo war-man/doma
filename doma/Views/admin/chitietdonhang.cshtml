@@ -4,13 +4,9 @@
     ViewBag.Title = "Chi tiết đơn hàng: " + Model.ID;
     long total = 0;
     int _cd = (int)(Model.ThoiGianGiao - DateTime.Now).TotalDays;
+   
 }
-<div class="box">
-    <div class="box-footer">
-        <span style="margin-right: 20px;">Quay lại </span>
-        <a class="btn btn-primary" href="../../admin">Admin</a>
-    </div>
-</div>
+@Html.Partial("_my_break_bar_top")
 
 <div class="box box-info">
     <div class="box-header">
@@ -88,6 +84,7 @@
                     <td><strong>Đơn giá</strong></td>
                     <td><strong>Số lượng</strong></td>
                     <td><strong>Thành tiên</strong></td>
+                    <td><strong>Ghi chú</strong></td>
                 </tr>
             </thead>
             <tbody>
@@ -99,6 +96,15 @@
                         <td>@item.SanPham.DioGia</td>
                         <td>@item.SoLuong</td>
                         <td style="color: red; text-align: right;">@((@item.SanPham.DioGia * @item.SoLuong).ToString("#,##"))</td>
+                        <td>
+                            @if(item.IDBoSanPham > 0)
+                            {
+                                doma.Models.ProjectDMEntities db = new doma.Models.ProjectDMEntities();
+                                 doma.Models.BoSanPham bosanpham = db.BoSanPhams.SingleOrDefault(t => t.ID == item.IDBoSanPham);
+                                 <small>@bosanpham.Ten</small>
+                            }                           
+                        </td>
+                        
                         @{
                     total += item.SanPham.DioGia * item.SoLuong;
                         }

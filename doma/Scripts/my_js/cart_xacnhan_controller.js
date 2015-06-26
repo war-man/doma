@@ -17,7 +17,8 @@
             $scope.thoigian = thoigian;
 
             var form = $('#__AjaxAntiForgeryForm');
-            $scope.accecttoken =  $('input[name="__RequestVerificationToken"]', form).val();
+            $scope.accecttoken = $('input[name="__RequestVerificationToken"]', form).val();
+            $scope.converttochiviets();
         }
 
         $scope.counttotalamount = function () {
@@ -47,7 +48,7 @@
 
             if ($scope.products.length >= 1)
             {
-                $scope.converttochiviets();
+              
                 var config = $scope.getaccokent();
                 $http.post('../../cart/xacnhan',
                       {
@@ -76,6 +77,8 @@
                 var item = {};
                 item.id = $scope.products[i].id;
                 item.soluong = $scope.products[i].number;
+                
+                item.idbosanpham = $scope.products[i].idbosanpham;
                 $scope.chitiets.push(item);
             }
         }

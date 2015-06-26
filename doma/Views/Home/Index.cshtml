@@ -1,5 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    doma.Models.ProjectDMEntities db = new doma.Models.ProjectDMEntities();
+    List<doma.Models.BaiViet> baiviet = db.BaiViets.OrderBy(t => t.NgayDang).ToList();
 }
 
 
@@ -135,6 +137,28 @@
             </div>
         </div>
     </div>
+
+
+    <div class="clearfix"></div>
+    <h2>
+        Bài viết
+    </h2>
+    <hr />
+    @foreach (var item in baiviet)
+    {
+        <div class="col-md-3">
+            <div class="box box-img">
+                <div class="box-header"><a href="../../home/baiviet/@item.ID"><strong>@item.TieuDe</strong></a></div>
+                <div class="box-body">
+                    <img ng-src="@item.linkHinh" class="img-box" />
+                </div>
+                <div class="box-footer" style="text-align:center;">
+                    <small>@item.NgayDang</small>
+                </div>
+            </div>
+        </div>
+    }
+
 </div>
 
 

@@ -29,6 +29,7 @@ namespace doma.Models
     {
         public int id { get; set; }
         public int soluong { get; set; }
+        public int idbosanpham { get; set; }
     }
 
     public class validateMinDay : ValidationAttribute

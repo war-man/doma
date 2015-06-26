@@ -147,6 +147,17 @@ namespace doma.Controllers
             return HttpNotFound();
         }
 
+        public ActionResult baiviet(int id)
+        {
+            BaiViet item = db.BaiViets.SingleOrDefault(t => t.ID == id);
+            if(item != null)
+            {
+                return View(item);
+            }
+
+            return RedirectToAction("index");
+        }
+
     }
 
     public class SanPhamReturn

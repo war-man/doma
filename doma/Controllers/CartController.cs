@@ -67,7 +67,7 @@ namespace doma.Controllers
                     item.IDDonHang = dh.ID;
                     item.IDSanPham = chitiet[i].id;
                     item.SoLuong = chitiet[i].soluong;
-
+                    item.IDBoSanPham = chitiet[i].idbosanpham;
                     db.ChiTietDonHangs.Add(item);
                 }
 

@@ -21,6 +21,7 @@
                         <td>Số lượng</td>
                         <td>Thành tiền</td>
                         <td>Xóa</td>
+                        <td>Ghi chú</td>
                     </tr>
                 </thead>
 
@@ -32,6 +33,7 @@
                         <td>{{product.number | number}}</td>
                         <td style="color:red;">{{product.number * product.price | number}} VNĐ</td>
                         <td><button class="btn btn-warning" ng-click="deleteproduct(product.id)">Xóa</button></td>
+                        <td>{{product.comment}}</td>
                     </tr>
                 </tbody>
 

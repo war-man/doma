@@ -53,14 +53,14 @@ app.service('cart_service', function ($window) {
 
     var cart = [];
 
-    var add_product_to_cart = function (product, idbosanpham) {
+    var add_product_to_cart = function (product, idbosanpham, tenbosanpham) {
         if (idbosanpham)
         {
-            alert("co id bo san pham");
             product.idbosanpham = idbosanpham;
+            product.comment = tenbosanpham;
         }
         else {
-            alert("KHONG co id bo san pham");
+            product.comment = "Sản phẩm mua đơn";
             product.idbosanpham = -1;
         }
         for (var i = 0; i < cart.length; i++) {
@@ -70,6 +70,7 @@ app.service('cart_service', function ($window) {
                 return;
             }
         }
+        alert(product.idbosanpham);
         cart.push(product);
         save_cart();
     }

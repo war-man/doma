@@ -9,8 +9,9 @@
     List<doma.Models.DonHang> _don_hang_moi = db.DonHangs.Where(t => t.TinhTrang == 1).ToList();
     List<doma.Models.DonHang> _don_hang_da_goi = db.DonHangs.Where(t => t.TinhTrang == 2).ToList();
     List<doma.Models.DonHang> _don_hang_dang_gui = db.DonHangs.Where(t => t.TinhTrang == 3).ToList();
-
+    
     ViewBag.Title = "Quản trị";
+                    //addbaiviet
 }
 
 <div class="row">
@@ -24,7 +25,6 @@
             <div class="icon">
                 <i class="ion ion-bag"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div><!-- ./col -->
     <div class="col-lg-3 col-xs-6">
@@ -37,7 +37,6 @@
             <div class="icon">
                 <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div><!-- ./col -->
     <div class="col-lg-3 col-xs-6">
@@ -50,20 +49,18 @@
             <div class="icon">
                 <i class="ion ion-person-add"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div><!-- ./col -->
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>@count_baiviet</h3>
+                <h3>@db.BaiViets.Count()</h3>
                 <p>Bài viết</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div><!-- ./col -->
 </div>
@@ -79,7 +76,9 @@
                 <li class="active"><a href="#tab_orders" data-toggle="tab">Đơn hàng</a></li>
                 <li><a href="#tab_products" data-toggle="tab">Sản phẩm</a></li>
                 <li><a href="#tab_bosanpham" data-toggle="tab">Bộ Sản phẩm</a></li>
+                <li><a href="#tab_baiviet" data-toggle="tab">Bài viết</a></li>
                 <li><a href="#tab_users" data-toggle="tab">Người dùng</a></li>
+
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab_orders">
@@ -255,7 +254,6 @@
 
                 </div>
                 <div class="tab-pane" id="tab_users">
-
                     <table class="table table-hover table-bordered">
                         <thead>
                             <tr>
@@ -282,9 +280,34 @@
                             }
                         </tbody>
                     </table>
-
-
                 </div>
+
+                <div class="tab-pane" id="tab_baiviet">
+                    <a class="btn btn-success" href="../../admin/addbaiviet">Thêm bài viết</a>
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <td>ID</td>
+                                <td>Tiêu đề</td>
+                                <td>Ngày đăng</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in db.BaiViets)
+                            {
+                                <tr onclick="editbaiviet('@item.ID')" style="cursor: pointer;">
+                                    <td>
+                                        @item.ID
+                                    </td>
+                                    <td>@item.TieuDe</td>
+                                    <td>@item.NgayDang</td>                                    
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                
                 <!-- /.tab-pane -->
             </div><!-- /.tab-content -->
         </div>
@@ -304,5 +327,10 @@
 
     function editgroupproduct(id) {
         window.location.href = "../../admin/editgroupproduct/" + id;
+    }
+
+    function editbaiviet(id)
+    {
+        window.location.href = "../../admin/editbaiviet/" + id;
     }
 </script>

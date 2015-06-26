@@ -1,0 +1,16 @@
+﻿@model doma.Models.BaiViet
+
+<div class="box box-info">
+    <div class="box-header">
+        <h3>@Model.TieuDe</h3>
+    </div>
+
+    <div class="box-body">
+        @Html.Raw(Model.NoiDung)
+    </div>
+
+    <div class="footer">
+       <p> =============================</p>
+        <small>Ngày đăng: @Model.NgayDang</small>
+    </div>
+</div>
