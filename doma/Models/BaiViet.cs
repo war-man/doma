@@ -11,22 +11,13 @@ namespace doma.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class BaiViet
     {
         public int ID { get; set; }
-
-        [Required]
         public string TieuDe { get; set; }
-
-        [Required]
         public string NoiDung { get; set; }
-
-        [Required]
         public string linkHinh { get; set; }
-
-        [Required]
         public System.DateTime NgayDang { get; set; }
     }
 }

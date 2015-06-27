@@ -25,10 +25,6 @@ namespace doma.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
-        public virtual DbSet<DonHang> DonHangs { get; set; }
-        public virtual DbSet<SanPham> SanPhams { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
@@ -37,5 +33,8 @@ namespace doma.Models
         public virtual DbSet<BaiViet> BaiViets { get; set; }
         public virtual DbSet<BoSanPham> BoSanPhams { get; set; }
         public virtual DbSet<ChiTietBoSanPham> ChiTietBoSanPhams { get; set; }
+        public virtual DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
+        public virtual DbSet<DonHang> DonHangs { get; set; }
+        public virtual DbSet<SanPham> SanPhams { get; set; }
     }
 }

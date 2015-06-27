@@ -14,6 +14,7 @@ namespace doma.Models
     
     public partial class DonHang
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DonHang()
         {
             this.ChiTietDonHangs = new HashSet<ChiTietDonHang>();
@@ -23,12 +24,13 @@ namespace doma.Models
         public string UserID { get; set; }
         public string DiaChiGiao { get; set; }
         public System.DateTime ThoiGianGiao { get; set; }
-        public short TinhTrang { get; set; }
+        public int TinhTrang { get; set; }
         public string SoDienThoai { get; set; }
         public System.DateTime NgayTao { get; set; }
         public string Comment { get; set; }
     
-        public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
     }
 }
