@@ -139,5 +139,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="HeadItems">
+      <EntityTypeMapping TypeName="ProjectDMModel.HeadItem">
+        <MappingFragment StoreEntitySet="HeadItem">
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="href" ColumnName="href" />
+          <ScalarProperty Name="caption" ColumnName="caption" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -9,9 +9,9 @@
     List<doma.Models.DonHang> _don_hang_moi = db.DonHangs.Where(t => t.TinhTrang == 1).ToList();
     List<doma.Models.DonHang> _don_hang_da_goi = db.DonHangs.Where(t => t.TinhTrang == 2).ToList();
     List<doma.Models.DonHang> _don_hang_dang_gui = db.DonHangs.Where(t => t.TinhTrang == 3).ToList();
-    
+
     ViewBag.Title = "Quản trị";
-                    //addbaiviet
+    //addbaiviet
 }
 
 <div class="row">
@@ -77,6 +77,7 @@
                 <li><a href="#tab_products" data-toggle="tab">Sản phẩm</a></li>
                 <li><a href="#tab_bosanpham" data-toggle="tab">Bộ Sản phẩm</a></li>
                 <li><a href="#tab_baiviet" data-toggle="tab">Bài viết</a></li>
+                <li><a href="#tab_topmenus" data-toggle="tab">Top Menu</a></li>
                 <li><a href="#tab_users" data-toggle="tab">Người dùng</a></li>
 
             </ul>
@@ -98,19 +99,19 @@
                             {
                                 foreach (var item in _don_hang_moi)
                                 {
-                                    <tr style="cursor:pointer;" onclick="chitietdonhang(@item.ID)">
-                                        <td>@item.ID</td>
-                                        <td>@item.AspNetUser.HoTen</td>
-                                        <td>@item.ThoiGianGiao <strong style="color:red;"> còn @((int)(item.ThoiGianGiao - DateTime.Now).TotalDays) ngày</strong></td>
-                                        <td>
-                                            <span class="badge bg-red">Mới, đang đợi gọi xác nhận</span>
-                                        </td>
-                                    </tr>
+                            <tr style="cursor:pointer;" onclick="chitietdonhang(@item.ID)">
+                                <td>@item.ID</td>
+                                <td>@item.AspNetUser.HoTen</td>
+                                <td>@item.ThoiGianGiao <strong style="color:red;"> còn @((int)(item.ThoiGianGiao - DateTime.Now).TotalDays) ngày</strong></td>
+                                <td>
+                                    <span class="badge bg-red">Mới, đang đợi gọi xác nhận</span>
+                                </td>
+                            </tr>
                                 }
                             }
                             else
                             {
-                                <tr><td colspan="4">Chưa có đơn hàng nào</td></tr>
+                            <tr><td colspan="4">Chưa có đơn hàng nào</td></tr>
                             }
                         </tbody>
                         <tfoot></tfoot>
@@ -133,19 +134,19 @@
                             {
                                 foreach (var item in _don_hang_da_goi)
                                 {
-                                    <tr style="cursor:pointer;" onclick="chitietdonhang(@item.ID)">
-                                        <td>@item.ID</td>
-                                        <td>@item.AspNetUser.HoTen</td>
-                                        <td>@item.ThoiGianGiao <strong style="color:red;"> còn @((int)(item.ThoiGianGiao - DateTime.Now).TotalDays) ngày</td>
-                                        <td>
-                                            <span class="badge bg-green-active">Đã gọi và đang chuẩn bị hàng</span>
-                                        </td>
-                                    </tr>
+                            <tr style="cursor:pointer;" onclick="chitietdonhang(@item.ID)">
+                                <td>@item.ID</td>
+                                <td>@item.AspNetUser.HoTen</td>
+                                <td>@item.ThoiGianGiao <strong style="color:red;"> còn @((int)(item.ThoiGianGiao - DateTime.Now).TotalDays) ngày</td>
+                                <td>
+                                    <span class="badge bg-green-active">Đã gọi và đang chuẩn bị hàng</span>
+                                </td>
+                            </tr>
                                 }
                             }
                             else
                             {
-                                <tr><td colspan="4">Trống</td></tr>
+                            <tr><td colspan="4">Trống</td></tr>
                             }
                         </tbody>
                         <tfoot></tfoot>
@@ -168,19 +169,19 @@
                             {
                                 foreach (var item in _don_hang_dang_gui)
                                 {
-                                    <tr style="cursor:pointer;" onclick="chitietdonhang(@item.ID)">
-                                        <td>@item.ID</td>
-                                        <td>@item.AspNetUser.HoTen</td>
-                                        <td>@item.ThoiGianGiao <strong style="color:red;"> còn @((int)(item.ThoiGianGiao - DateTime.Now).TotalDays) ngày</td>
-                                        <td>
-                                            <span class="badge bg-blue-active">Đang gửi đi</span>
-                                        </td>
-                                    </tr>
+                            <tr style="cursor:pointer;" onclick="chitietdonhang(@item.ID)">
+                                <td>@item.ID</td>
+                                <td>@item.AspNetUser.HoTen</td>
+                                <td>@item.ThoiGianGiao <strong style="color:red;"> còn @((int)(item.ThoiGianGiao - DateTime.Now).TotalDays) ngày</td>
+                                <td>
+                                    <span class="badge bg-blue-active">Đang gửi đi</span>
+                                </td>
+                            </tr>
                                 }
                             }
                             else
                             {
-                                <tr><td colspan="4">Trống</td></tr>
+                            <tr><td colspan="4">Trống</td></tr>
                             }
                         </tbody>
                         <tfoot></tfoot>
@@ -206,18 +207,18 @@
                         <tbody>
                             @foreach (var item in db.SanPhams)
                             {
-                                <tr>
-                                    <td>@item.Ten</td>
-                                    <td>@item.DioGia</td>
-                                    <td>
-                                        <img src="" />
-                                    </td>
-                                    <td>@item.TinhTrang</td>
-                                    <td>@item.SoLuong</td>
-                                    <td>
-                                        <a href="../../admin/editproduct?id=@item.ID" class="btn btn-primary">Sửa</a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>@item.Ten</td>
+                                <td>@item.DioGia</td>
+                                <td>
+                                    <img src="" />
+                                </td>
+                                <td>@item.TinhTrang</td>
+                                <td>@item.SoLuong</td>
+                                <td>
+                                    <a href="../../admin/editproduct?id=@item.ID" class="btn btn-primary">Sửa</a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
@@ -240,19 +241,20 @@
                         <tbody>
                             @foreach (var item in db.BoSanPhams)
                             {
-                                <tr style="cursor: pointer;" onclick="editgroupproduct(@item.ID)">
-                                    <td>@item.ID</td>
-                                    <td>@item.Ten</td>
-                                    <td>@item.ChiTietBoSanPhams.Count()</td>
-                                    <td>@item.Mota</td>
-                                    <td>@item.NgayTao</td>
-                                </tr>
+                            <tr style="cursor: pointer;" onclick="editgroupproduct(@item.ID)">
+                                <td>@item.ID</td>
+                                <td>@item.Ten</td>
+                                <td>@item.ChiTietBoSanPhams.Count()</td>
+                                <td>@item.Mota</td>
+                                <td>@item.NgayTao</td>
+                            </tr>
                             }
                         </tbody>
                     </table>
 
 
                 </div>
+
                 <div class="tab-pane" id="tab_users">
                     <table class="table table-hover table-bordered">
                         <thead>
@@ -266,17 +268,17 @@
                         <tbody>
                             @foreach (var item in db.AspNetUsers)
                             {
-                                <tr onclick="user('@item.Id')" style="cursor: pointer;">
-                                    <td>
-                                        <img src="@item.avatar" style="width:25px;" />
-                                    </td>
-                                    <td>@item.HoTen</td>
-                                    <td>
-                                        <span style="color:red;">@item.DonHangs.Where(t => t.TinhTrang > 1).Count()</span>
-                                        /
-                                        <span style="color:blue;">@item.DonHangs.Count()</span>
-                                    </td>
-                                </tr>
+                            <tr onclick="user('@item.Id')" style="cursor: pointer;">
+                                <td>
+                                    <img src="@item.avatar" style="width:25px;" />
+                                </td>
+                                <td>@item.HoTen</td>
+                                <td>
+                                    <span style="color:red;">@item.DonHangs.Where(t => t.TinhTrang > 1).Count()</span>
+                                    /
+                                    <span style="color:blue;">@item.DonHangs.Count()</span>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
@@ -296,18 +298,60 @@
                         <tbody>
                             @foreach (var item in db.BaiViets)
                             {
-                                <tr onclick="editbaiviet('@item.ID')" style="cursor: pointer;">
+                            <tr onclick="editbaiviet('@item.ID')" style="cursor: pointer;">
+                                <td>
+                                    @item.ID
+                                </td>
+                                <td>@item.TieuDe</td>
+                                <td>@item.NgayDang</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tab-pane" id="tab_topmenus" style="overflow:auto;">
+                    <a class="btn btn-success" href="../../admin/createheaditem">Thêm menu</a>
+                    <table class="table table-hover table-bordered" style="overflow:auto;">
+                        <thead>
+                            <tr>
+                                <td>ID</td>
+                                <td>Ảnh</td>
+                                <td>Địa chỉ tới</td>
+                                <td>Loại</td>
+                                <td>Xóa</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in db.HeadItems)
+                            {
+                                <tr>
                                     <td>
-                                        @item.ID
+                                        @item.id
                                     </td>
-                                    <td>@item.TieuDe</td>
-                                    <td>@item.NgayDang</td>                                    
+                                    <td>@item.image</td>
+                                    <td>@item.href</td>
+                                    <td>
+                                        @switch (item.type)
+                                        {
+                                            case 0:
+                                                <p>Menu chính</p>
+                                                break;
+                                            case 1:
+                                                <p>Menu phụ</p>
+                                                break;
+                                        }
+                                    </td>
+                                    <td>
+                                        <a onclick="deleteheaditem(@item.id)" class="btn btn-warning">Xóa</a>
+                                    </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
                 </div>
-                
+
                 <!-- /.tab-pane -->
             </div><!-- /.tab-content -->
         </div>
@@ -329,8 +373,15 @@
         window.location.href = "../../admin/editgroupproduct/" + id;
     }
 
-    function editbaiviet(id)
-    {
+    function editbaiviet(id) {
         window.location.href = "../../admin/editbaiviet/" + id;
+    }
+
+    function deleteheaditem(id)
+    {
+        if(confirm("Chắc chắn xóa menu này?"))
+        {
+            window.location.href = "../../admin/deleteheaditem/" + id;
+        }
     }
 </script>

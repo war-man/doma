@@ -120,6 +120,7 @@
       <End Role="SanPham" EntitySet="SanPhams" />
       <End Role="ChiTietBoSanPham" EntitySet="ChiTietBoSanPhams" />
     </AssociationSet>
+    <EntitySet Name="HeadItems" EntityType="ProjectDMModel.HeadItem" />
   </EntityContainer>
   <EntityType Name="C__MigrationHistory">
     <Key>
@@ -277,4 +278,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="HeadItem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="image" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="caption" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="href" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="type" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

@@ -109,6 +109,16 @@
     <Property Name="NgayTao" Type="datetime" Nullable="false" />
     <Property Name="Comment" Type="ntext" />
   </EntityType>
+  <EntityType Name="HeadItem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="image" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="caption" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="href" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="type" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="SanPham">
     <Key>
       <PropertyRef Name="ID" />
@@ -259,6 +269,7 @@
     <EntitySet Name="ChiTietBoSanPham" EntityType="Self.ChiTietBoSanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietDonHang" EntityType="Self.ChiTietDonHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HeadItem" EntityType="Self.HeadItem" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ChiTietBoSanPham_BoSanPham" Association="Self.FK_ChiTietBoSanPham_BoSanPham">

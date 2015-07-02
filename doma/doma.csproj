@@ -238,6 +238,9 @@
     <Compile Include="Models\DonHang.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HeadItem.cs">
+      <DependentUpon>DBModal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MyModels.cs" />
     <Compile Include="Models\SanPham.cs">
@@ -999,6 +1002,7 @@
     <Content Include="Views\Shared\_my_break_bar_top.cshtml" />
     <Content Include="Views\admin\editbaiviet.cshtml" />
     <Content Include="Views\Home\baiviet.cshtml" />
+    <Content Include="Views\admin\createheaditem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

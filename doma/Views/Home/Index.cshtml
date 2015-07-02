@@ -2,6 +2,8 @@
     ViewBag.Title = "Home Page";
     doma.Models.ProjectDMEntities db = new doma.Models.ProjectDMEntities();
     List<doma.Models.BaiViet> baiviet = db.BaiViets.OrderBy(t => t.NgayDang).ToList();
+    List<doma.Models.HeadItem> headitems = db.HeadItems.ToList();
+    bool _check_first = true;
 }
 
 
@@ -12,30 +14,52 @@
                 <div class="box-body">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                            @foreach (var item in headitems)
+                            {
+                                if (item.type == 0)
+                                {
+                                    if (_check_first)
+                                    {
+                                        <li data-target="#carousel-example-generic" data-slide-to="@item.id" class="active"></li>
+                                    }
+                                    else
+                                    {
+                                        <li data-target="#carousel-example-generic" data-slide-to="@item.id"></li>
+                                    }
+                                }
+                            }
                         </ol>
                         <div class="carousel-inner">
-                            <div class="item active">
-                                <img src="http://placehold.it/900x500/39CCCC/ffffff&amp;text=I+Love+Bootstrap" alt="First slide">
-                                <div class="carousel-caption">
-                                    First Slide
-                                </div>
-                            </div>
-                            <div class="item">
-                                <img src="http://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
-                                <div class="carousel-caption">
-                                    Second Slide
-                                </div>
-                            </div>
-                            <div class="item">
-                                <img src="http://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
-                                <div class="carousel-caption">
-                                    Third Slide
-                                </div>
-                            </div>
+                            @foreach (var item in headitems)
+                            {
+                                if (item.type == 0)
+                                {
+                                    if (_check_first)
+                                    {
+                                        <div class="item active" onclick="redirectitem('@item.href')" style="cursor:pointer;">
+                                            <img src="@item.image" alt="@item.caption">
+                                            <div class="carousel-caption">
+                                                @item.caption
+                                            </div>
+                                        </div>
+
+                                        _check_first = false;
+                                    }
+                                    else
+                                    {
+                                        <div class="item" onclick="redirectitem('@item.href')" style="cursor:pointer;">
+                                            <img src="@item.image" alt="@item.caption">
+                                            <div class="carousel-caption">
+                                                @item.caption
+                                            </div>
+                                        </div>
+                                    }
+
+                                }
+                            }
+
                         </div>
+
                         <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                             <span class="fa fa-angle-left"></span>
                         </a>
@@ -46,60 +70,20 @@
                 </div><!-- /.box-body -->
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3" style="overflow:auto;">
 
-            <div class="info-box bg-yellow">
-                <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Inventory</span>
-                    <span class="info-box-number">5,200</span>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 50%"></div>
-                    </div>
-                    <span class="progress-description">
-                        50% Increase in 30 Days
-                    </span>
-                </div><!-- /.info-box-content -->
-            </div><!-- /.info-box -->
-            <div class="info-box bg-green">
-                <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Mentions</span>
-                    <span class="info-box-number">92,050</span>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 20%"></div>
-                    </div>
-                    <span class="progress-description">
-                        20% Increase in 30 Days
-                    </span>
-                </div><!-- /.info-box-content -->
-            </div><!-- /.info-box -->
-            <div class="info-box bg-red">
-                <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Downloads</span>
-                    <span class="info-box-number">114,381</span>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 70%"></div>
-                    </div>
-                    <span class="progress-description">
-                        70% Increase in 30 Days
-                    </span>
-                </div><!-- /.info-box-content -->
-            </div><!-- /.info-box -->
-            <div class="info-box bg-aqua">
-                <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
-                <div class="info-box-content">
-                    <span class="info-box-text">Direct Messages</span>
-                    <span class="info-box-number">163,921</span>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 40%"></div>
-                    </div>
-                    <span class="progress-description">
-                        40% Increase in 30 Days
-                    </span>
-                </div><!-- /.info-box-content -->
-            </div><!-- /.info-box -->
+            @foreach (var item in headitems)
+            {
+                if (item.type == 1)
+                {
+                    <div class="info-box bg-info" onclick="redirectitem('@item.href')" style="cursor:pointer;">
+                        <span class="info-box-icon"><img src="@item.image" style="width: 90px;" /></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">@item.caption</span>
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                }
+            }
         </div>
     </div>
 
@@ -157,8 +141,16 @@
                 </div>
             </div>
         </div>
+
+
     }
 
 </div>
+
+<script>
+    function redirectitem(href) {
+        window.location.href = href;
+    }
+</script>
 
 

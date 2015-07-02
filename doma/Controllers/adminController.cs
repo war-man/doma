@@ -314,6 +314,46 @@ namespace doma.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public ActionResult createheaditem()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult createheaditem(HeadItem model)
+        {
+            HeadItem item = db.HeadItems.Create();
+            if (ModelState.IsValid)
+            {
+                item.caption = model.caption;
+                item.href = model.href;
+                item.image = model.image;
+                item.type = model.type;
+
+                db.HeadItems.Add(item);
+                db.SaveChangesAsync();
+                return RedirectToAction("index");
+            }
+            else
+            {
+                return View(model);
+            }
+        }
+
+        public ActionResult deleteheaditem(int id)
+        {
+            HeadItem item = db.HeadItems.SingleOrDefault(t => t.id == id);
+            if(item != null)
+            {
+                db.HeadItems.Remove(item);
+                db.SaveChangesAsync();
+            }
+            return RedirectToAction("Index");
+        }
+
+
     }
 
     public class AddGroupProductModel
