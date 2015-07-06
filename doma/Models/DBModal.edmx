@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dbd10fcbfd85b748018c53a4c0003fb694Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ProjectDMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -114,6 +114,16 @@
           <Property Name="NgayTao" Type="datetime" Nullable="false" />
           <Property Name="Comment" Type="ntext" />
         </EntityType>
+        <EntityType Name="HeadItem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="image" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="caption" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="href" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="type" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="SanPham">
           <Key>
             <PropertyRef Name="ID" />
@@ -125,6 +135,16 @@
           <Property Name="MoTa" Type="ntext" Nullable="false" />
           <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" />
           <Property Name="SoLuong" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_ChiTietBoSanPham_BoSanPham">
           <End Role="BoSanPham" Type="Self.BoSanPham" Multiplicity="1" />
@@ -242,7 +262,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dbd10fcbfd85b748018c53a4c0003fb694ModelStoreContainer">
+        <EntityContainer Name="ProjectDMModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
@@ -254,7 +274,9 @@
           <EntitySet Name="ChiTietBoSanPham" EntityType="Self.ChiTietBoSanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietDonHang" EntityType="Self.ChiTietDonHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HeadItem" EntityType="Self.HeadItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ChiTietBoSanPham_BoSanPham" Association="Self.FK_ChiTietBoSanPham_BoSanPham">
             <End Role="BoSanPham" EntitySet="BoSanPham" />
             <End Role="ChiTietBoSanPham" EntitySet="ChiTietBoSanPham" />
@@ -296,7 +318,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="dbd10fcbfd85b748018c53a4c0003fb694Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ProjectDMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -412,6 +434,16 @@
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_DonHang_AspNetUsers" FromRole="DonHang" ToRole="AspNetUsers" />
           <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK_ChiTietDonHang_DonHang" FromRole="DonHang" ToRole="ChiTietDonHang" />
         </EntityType>
+        <EntityType Name="HeadItem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="caption" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="href" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="SanPham">
           <Key>
             <PropertyRef Name="ID" />
@@ -425,6 +457,16 @@
           <Property Name="SoLuong" Type="Int32" />
           <NavigationProperty Name="ChiTietBoSanPhams" Relationship="Self.FK_ChiTietBoSanPham_SanPham" FromRole="SanPham" ToRole="ChiTietBoSanPham" />
           <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK_ChiTietDonHang_SanPham" FromRole="SanPham" ToRole="ChiTietDonHang" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -529,7 +571,9 @@
           <EntitySet Name="ChiTietBoSanPhams" EntityType="Self.ChiTietBoSanPham" />
           <EntitySet Name="ChiTietDonHangs" EntityType="Self.ChiTietDonHang" />
           <EntitySet Name="DonHangs" EntityType="Self.DonHang" />
+          <EntitySet Name="HeadItems" EntityType="Self.HeadItem" />
           <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -568,9 +612,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dbd10fcbfd85b748018c53a4c0003fb694ModelStoreContainer" CdmEntityContainer="ProjectDMEntities">
+        <EntityContainerMapping StorageEntityContainer="ProjectDMModelStoreContainer" CdmEntityContainer="ProjectDMEntities">
           <EntitySetMapping Name="C__MigrationHistory">
-            <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.C__MigrationHistory">
+            <EntityTypeMapping TypeName="ProjectDMModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
                 <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
                 <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
@@ -580,7 +624,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.AspNetRole">
+            <EntityTypeMapping TypeName="ProjectDMModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -588,7 +632,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.AspNetUserClaim">
+            <EntityTypeMapping TypeName="ProjectDMModel.AspNetUserClaim">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
@@ -598,7 +642,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.AspNetUserLogin">
+            <EntityTypeMapping TypeName="ProjectDMModel.AspNetUserLogin">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
@@ -607,7 +651,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.AspNetUser">
+            <EntityTypeMapping TypeName="ProjectDMModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -622,7 +666,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BaiViets">
-            <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.BaiViet">
+            <EntityTypeMapping TypeName="ProjectDMModel.BaiViet">
               <MappingFragment StoreEntitySet="BaiViet">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
@@ -633,7 +677,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BoSanPhams">
-            <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.BoSanPham">
+            <EntityTypeMapping TypeName="ProjectDMModel.BoSanPham">
               <MappingFragment StoreEntitySet="BoSanPham">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
@@ -643,7 +687,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChiTietBoSanPhams">
-            <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.ChiTietBoSanPham">
+            <EntityTypeMapping TypeName="ProjectDMModel.ChiTietBoSanPham">
               <MappingFragment StoreEntitySet="ChiTietBoSanPham">
                 <ScalarProperty Name="IDBoSanPham" ColumnName="IDBoSanPham" />
                 <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
@@ -652,7 +696,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChiTietDonHangs">
-            <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.ChiTietDonHang">
+            <EntityTypeMapping TypeName="ProjectDMModel.ChiTietDonHang">
               <MappingFragment StoreEntitySet="ChiTietDonHang">
                 <ScalarProperty Name="IDDonHang" ColumnName="IDDonHang" />
                 <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
@@ -662,7 +706,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DonHangs">
-            <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.DonHang">
+            <EntityTypeMapping TypeName="ProjectDMModel.DonHang">
               <MappingFragment StoreEntitySet="DonHang">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -675,8 +719,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="HeadItems">
+            <EntityTypeMapping TypeName="ProjectDMModel.HeadItem">
+              <MappingFragment StoreEntitySet="HeadItem">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="caption" ColumnName="caption" />
+                <ScalarProperty Name="href" ColumnName="href" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SanPhams">
-            <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.SanPham">
+            <EntityTypeMapping TypeName="ProjectDMModel.SanPham">
               <MappingFragment StoreEntitySet="SanPham">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
@@ -688,7 +743,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ProjectDMModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="ProjectDMModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>

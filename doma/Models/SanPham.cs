@@ -14,7 +14,6 @@ namespace doma.Models
     
     public partial class SanPham
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SanPham()
         {
             this.ChiTietBoSanPhams = new HashSet<ChiTietBoSanPham>();
@@ -29,9 +28,7 @@ namespace doma.Models
         public string TinhTrang { get; set; }
         public Nullable<int> SoLuong { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietBoSanPham> ChiTietBoSanPhams { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; }
     }
 }

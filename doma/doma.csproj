@@ -194,49 +194,49 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Controllers\adminController.cs" />
     <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserClaim.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserLogin.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BaiViet.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BoSanPham.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietBoSanPham.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietDonHang.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBModel.Context.cs">
+    <Compile Include="Models\DBModal.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.Context.tt</DependentUpon>
+      <DependentUpon>DBModal.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBModel.cs">
+    <Compile Include="Models\DBModal.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DBModel.Designer.cs">
+    <Compile Include="Models\DBModal.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.edmx</DependentUpon>
+      <DependentUpon>DBModal.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\DonHang.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HeadItem.cs">
       <DependentUpon>DBModal.tt</DependentUpon>
@@ -244,7 +244,10 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MyModels.cs" />
     <Compile Include="Models\SanPham.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>DBModal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>DBModal.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -804,16 +807,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\DBModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBModel.edmx</DependentUpon>
-      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\DBModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBModel.edmx</DependentUpon>
-      <LastGenOutput>DBModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\angular-cookies.min.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -900,12 +893,22 @@
     <Content Include="Scripts\ckeditor\lang\zh-cn.js" />
     <Content Include="Scripts\ckeditor\lang\zh.js" />
     <Content Include="Scripts\ckeditor\skins\moono\readme.md" />
-    <EntityDeploy Include="Models\DBModel.edmx">
+    <EntityDeploy Include="Models\DBModal.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBModal.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DBModel.edmx.diagram">
-      <DependentUpon>DBModel.edmx</DependentUpon>
+    <Content Include="Models\DBModal.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBModal.edmx</DependentUpon>
+      <LastGenOutput>DBModal.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DBModal.edmx.diagram">
+      <DependentUpon>DBModal.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\DBModal.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBModal.edmx</DependentUpon>
+      <LastGenOutput>DBModal.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />

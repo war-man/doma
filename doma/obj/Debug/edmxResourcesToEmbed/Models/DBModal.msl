@@ -1,40 +1,133 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ProjectDMModelStoreContainer" CdmEntityContainer="ProjectDMEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="ProjectDMModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="ProjectDMModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="ProjectDMModel.AspNetUserClaim">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="ProjectDMModel.AspNetUserLogin">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="ProjectDMModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BaiViets">
+      <EntityTypeMapping TypeName="ProjectDMModel.BaiViet">
+        <MappingFragment StoreEntitySet="BaiViet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="linkHinh" ColumnName="linkHinh" />
+          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BoSanPhams">
+      <EntityTypeMapping TypeName="ProjectDMModel.BoSanPham">
+        <MappingFragment StoreEntitySet="BoSanPham">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="Mota" ColumnName="Mota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietBoSanPhams">
+      <EntityTypeMapping TypeName="ProjectDMModel.ChiTietBoSanPham">
+        <MappingFragment StoreEntitySet="ChiTietBoSanPham">
+          <ScalarProperty Name="IDBoSanPham" ColumnName="IDBoSanPham" />
+          <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
+          <ScalarProperty Name="SoLuongThuongMua" ColumnName="SoLuongThuongMua" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ChiTietDonHangs">
       <EntityTypeMapping TypeName="ProjectDMModel.ChiTietDonHang">
         <MappingFragment StoreEntitySet="ChiTietDonHang">
-          <ScalarProperty Name="IDBoSanPham" ColumnName="IDBoSanPham" />
           <ScalarProperty Name="IDDonHang" ColumnName="IDDonHang" />
           <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="IDBoSanPham" ColumnName="IDBoSanPham" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DonHangs">
       <EntityTypeMapping TypeName="ProjectDMModel.DonHang">
         <MappingFragment StoreEntitySet="DonHang">
-          <ScalarProperty Name="Comment" ColumnName="Comment" />
-          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="DiaChiGiao" ColumnName="DiaChiGiao" />
           <ScalarProperty Name="ThoiGianGiao" ColumnName="ThoiGianGiao" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HeadItems">
+      <EntityTypeMapping TypeName="ProjectDMModel.HeadItem">
+        <MappingFragment StoreEntitySet="HeadItem">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="caption" ColumnName="caption" />
+          <ScalarProperty Name="href" ColumnName="href" />
+          <ScalarProperty Name="type" ColumnName="type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SanPhams">
       <EntityTypeMapping TypeName="ProjectDMModel.SanPham">
         <MappingFragment StoreEntitySet="SanPham">
-          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
-          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Ten" ColumnName="Ten" />
           <ScalarProperty Name="DioGia" ColumnName="DioGia" />
           <ScalarProperty Name="linkanh" ColumnName="linkanh" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -49,106 +142,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="C__MigrationHistory">
-      <EntityTypeMapping TypeName="ProjectDMModel.C__MigrationHistory">
-        <MappingFragment StoreEntitySet="__MigrationHistory">
-          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-          <ScalarProperty Name="Model" ColumnName="Model" />
-          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AspNetRoles">
-      <EntityTypeMapping TypeName="ProjectDMModel.AspNetRole">
-        <MappingFragment StoreEntitySet="AspNetRoles">
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AspNetUserClaims">
-      <EntityTypeMapping TypeName="ProjectDMModel.AspNetUserClaim">
-        <MappingFragment StoreEntitySet="AspNetUserClaims">
-          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
-          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AspNetUserLogins">
-      <EntityTypeMapping TypeName="ProjectDMModel.AspNetUserLogin">
-        <MappingFragment StoreEntitySet="AspNetUserLogins">
-          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AspNetUsers">
-      <EntityTypeMapping TypeName="ProjectDMModel.AspNetUser">
-        <MappingFragment StoreEntitySet="AspNetUsers">
-          <ScalarProperty Name="avatar" ColumnName="avatar" />
-          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-          <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
-          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-          <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
-          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <AssociationSetMapping Name="AspNetUserRoles" TypeName="ProjectDMModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-      <EndProperty Name="AspNetUser">
-        <ScalarProperty Name="Id" ColumnName="UserId" />
-      </EndProperty>
-      <EndProperty Name="AspNetRole">
+      <EndProperty Name="AspNetRoles">
         <ScalarProperty Name="Id" ColumnName="RoleId" />
       </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
     </AssociationSetMapping>
-    <EntitySetMapping Name="BaiViets">
-      <EntityTypeMapping TypeName="ProjectDMModel.BaiViet">
-        <MappingFragment StoreEntitySet="BaiViet">
-          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
-          <ScalarProperty Name="linkHinh" ColumnName="linkHinh" />
-          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
-          <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="BoSanPhams">
-      <EntityTypeMapping TypeName="ProjectDMModel.BoSanPham">
-        <MappingFragment StoreEntitySet="BoSanPham">
-          <ScalarProperty Name="Mota" ColumnName="Mota" />
-          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-          <ScalarProperty Name="Ten" ColumnName="Ten" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ChiTietBoSanPhams">
-      <EntityTypeMapping TypeName="ProjectDMModel.ChiTietBoSanPham">
-        <MappingFragment StoreEntitySet="ChiTietBoSanPham">
-          <ScalarProperty Name="SoLuongThuongMua" ColumnName="SoLuongThuongMua" />
-          <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
-          <ScalarProperty Name="IDBoSanPham" ColumnName="IDBoSanPham" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="HeadItems">
-      <EntityTypeMapping TypeName="ProjectDMModel.HeadItem">
-        <MappingFragment StoreEntitySet="HeadItem">
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="href" ColumnName="href" />
-          <ScalarProperty Name="caption" ColumnName="caption" />
-          <ScalarProperty Name="image" ColumnName="image" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
