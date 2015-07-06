@@ -18,6 +18,7 @@ namespace doma.Models
         public int IDSanPham { get; set; }
         public int SoLuong { get; set; }
         public Nullable<int> IDBoSanPham { get; set; }
+        public int ID { get; set; }
     
         public virtual DonHang DonHang { get; set; }
         public virtual SanPham SanPham { get; set; }

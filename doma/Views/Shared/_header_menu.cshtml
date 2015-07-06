@@ -28,7 +28,7 @@
                         <li>
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
-                                <li ng-repeat="item in products track by item.id" style="cursor: pointer;" ng-click="changeitem(item.id)">
+                                <li ng-repeat="item in products track by item.count_number" style="cursor: pointer;" ng-click="changeitem(item.id)">
                                     <a>
                                         <div class="pull-left">
                                             <img ng-src="{{item.imgs[0].link}}" alt="User Image" />

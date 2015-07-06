@@ -21,10 +21,10 @@
             $rootScope.$broadcast('them_gio_hang_modal_controller::show', id);
         }
 
-        $scope.deleteproduct = function (id) {
+        $scope.deleteproduct = function (count_number) {
             var quest = confirm("Bạn muốn xóa sản phẩm này?");
             if (quest) {
-                cart_service.removeproduct(id);
+                cart_service.removeproduct(count_number);
                 $scope.counttotalamount();
             }
         }
@@ -48,3 +48,4 @@
 
 
     }]);
+

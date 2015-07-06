@@ -2,6 +2,8 @@
 
 app.service('my_function_services', function ($http) {
 
+   
+
     var pasreimg = function (text) {
         var count = 0;
         var imgs = [];
@@ -52,6 +54,7 @@ app.service('my_function_services', function ($http) {
 app.service('cart_service', function ($window) {
 
     var cart = [];
+    var count_number = 0;
 
     var add_product_to_cart = function (product, idbosanpham, tenbosanpham) {
         if (idbosanpham)
@@ -63,15 +66,19 @@ app.service('cart_service', function ($window) {
             product.comment = "Sản phẩm mua đơn";
             product.idbosanpham = -1;
         }
-        for (var i = 0; i < cart.length; i++) {
-            if (cart[i].id == product.id) {
-                cart[i] = product;
-                save_cart();
-                return;
-            }
-        }
-        alert(product.idbosanpham);
-        cart.push(product);
+       
+        var item = {};
+        item.id = product.id;
+        item.count_number;
+        item.imgs = product.imgs;
+        item.name = product.name;
+        item.number = product.number;
+        item.idbosanpham = product.idbosanpham;
+        item.comment = product.comment;
+
+        item.count_number = count_number + 1;
+        count_number += 1;
+        cart.push(item);
         save_cart();
     }
 
@@ -80,11 +87,13 @@ app.service('cart_service', function ($window) {
     }
 
     var loadcart = function () {
+
         cart = JSON.parse(localStorage.getItem("cart"));
         remove_double_item();
     }
 
     var init = function () {
+        
         loadcart();
     }
 
@@ -96,21 +105,13 @@ app.service('cart_service', function ($window) {
     var remove_double_item = function () {
         var testid = [];
         if (cart) {
-            for (var i = 0; i < cart.length; i++) {
-                for (var j = 0; j < testid.length; j++) {
-                    if (testid[j] == cart[i].id) {
-                        cart.splice(i, 1);
-                        break;
-                    }
-                }
-                if (j == testid.length) {
-                    testid.push(cart[i].id)
-                }
-            }
+            count_number = cart.length;
         }
         else {
             cart = [];
+            count_number = 0;
         }
+
 
     }
 
@@ -118,11 +119,11 @@ app.service('cart_service', function ($window) {
         return cart;
     }
 
-    var removeproduct = function (id) {
+    var removeproduct = function (count_number) {
         if (cart)
         {
             for (var i = 0; i < cart.length; i++) {
-                if (cart[i].id == id) {
+                if (cart[i].count_number == count_number) {
                     cart.splice(i, 1);
                 }
             }

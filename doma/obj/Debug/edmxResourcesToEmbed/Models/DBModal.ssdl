@@ -88,13 +88,13 @@
   </EntityType>
   <EntityType Name="ChiTietDonHang">
     <Key>
-      <PropertyRef Name="IDDonHang" />
-      <PropertyRef Name="IDSanPham" />
+      <PropertyRef Name="ID" />
     </Key>
     <Property Name="IDDonHang" Type="int" Nullable="false" />
     <Property Name="IDSanPham" Type="int" Nullable="false" />
     <Property Name="SoLuong" Type="int" Nullable="false" />
     <Property Name="IDBoSanPham" Type="int" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="DonHang">
     <Key>

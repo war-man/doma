@@ -26,13 +26,13 @@
                 </thead>
 
                 <tbody>
-                    <tr ng-repeat="product in products track by product.id" style="cursor:pointer;" ng-click="chooseproduct(product.id)">
+                    <tr ng-repeat="product in products track by product.count_number" style="cursor:pointer;" ng-click="chooseproduct(product.id)">
                         <td>{{product.name}}</td>
                         <td><img ng-src="{{product.imgs[0].link}}" style="  width: 50px;" /></td>
                         <td>{{product.price | number}} VNĐ</td>
                         <td>{{product.number | number}}</td>
                         <td style="color:red;">{{product.number * product.price | number}} VNĐ</td>
-                        <td><button class="btn btn-warning" ng-click="deleteproduct(product.id)">Xóa</button></td>
+                        <td><button class="btn btn-warning" ng-click="deleteproduct(product.count_number)">Xóa</button></td>
                         <td>{{product.comment}}</td>
                     </tr>
                 </tbody>

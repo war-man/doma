@@ -88,7 +88,7 @@ namespace doma.Controllers
         public ActionResult history() 
         {
             string userid = User.Identity.GetUserId();
-            List<DonHang> donhang = db.DonHangs.Where(t => t.UserID == userid).ToList();
+            List<DonHang> donhang = db.DonHangs.Where(t => t.UserID == userid).OrderByDescending(t=>t.NgayTao).ToList();
             return View(donhang);        
         }
     }

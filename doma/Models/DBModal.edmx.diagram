@@ -13,7 +13,6 @@
         <EntityTypeShape EntityType="ProjectDMModel.BaiViet" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectDMModel.BoSanPham" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectDMModel.ChiTietBoSanPham" Width="1.5" PointX="7.5" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProjectDMModel.ChiTietDonHang" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectDMModel.DonHang" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectDMModel.HeadItem" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ProjectDMModel.SanPham" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
@@ -23,9 +22,10 @@
         <AssociationConnector Association="ProjectDMModel.FK_DonHang_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectDMModel.FK_ChiTietBoSanPham_BoSanPham" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectDMModel.FK_ChiTietBoSanPham_SanPham" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDMModel.FK_ChiTietDonHang_DonHang" ManuallyRouted="false" />
-        <AssociationConnector Association="ProjectDMModel.FK_ChiTietDonHang_SanPham" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectDMModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProjectDMModel.ChiTietDonHang" Width="1.5" PointX="7.5" PointY="7.75" />
+        <AssociationConnector Association="ProjectDMModel.FK_ChiTietDonHang_DonHang" />
+        <AssociationConnector Association="ProjectDMModel.FK_ChiTietDonHang_SanPham" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
