@@ -90,13 +90,13 @@
   </EntityType>
   <EntityType Name="ChiTietDonHang">
     <Key>
-      <PropertyRef Name="IDDonHang" />
-      <PropertyRef Name="IDSanPham" />
+      <PropertyRef Name="ID" />
     </Key>
     <Property Name="IDDonHang" Type="Int32" Nullable="false" />
     <Property Name="IDSanPham" Type="Int32" Nullable="false" />
     <Property Name="SoLuong" Type="Int32" Nullable="false" />
     <Property Name="IDBoSanPham" Type="Int32" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="DonHang" Relationship="Self.FK_ChiTietDonHang_DonHang" FromRole="ChiTietDonHang" ToRole="DonHang" />
     <NavigationProperty Name="SanPham" Relationship="Self.FK_ChiTietDonHang_SanPham" FromRole="ChiTietDonHang" ToRole="SanPham" />
   </EntityType>
@@ -115,6 +115,16 @@
     <NavigationProperty Name="AspNetUser" Relationship="Self.FK_DonHang_AspNetUsers" FromRole="DonHang" ToRole="AspNetUsers" />
     <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK_ChiTietDonHang_DonHang" FromRole="DonHang" ToRole="ChiTietDonHang" />
   </EntityType>
+  <EntityType Name="HeadItem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="caption" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="href" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="type" Type="Int32" Nullable="false" />
+  </EntityType>
   <EntityType Name="SanPham">
     <Key>
       <PropertyRef Name="ID" />
@@ -128,6 +138,16 @@
     <Property Name="SoLuong" Type="Int32" />
     <NavigationProperty Name="ChiTietBoSanPhams" Relationship="Self.FK_ChiTietBoSanPham_SanPham" FromRole="SanPham" ToRole="ChiTietBoSanPham" />
     <NavigationProperty Name="ChiTietDonHangs" Relationship="Self.FK_ChiTietDonHang_SanPham" FromRole="SanPham" ToRole="ChiTietDonHang" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
     <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -232,7 +252,9 @@
     <EntitySet Name="ChiTietBoSanPhams" EntityType="Self.ChiTietBoSanPham" />
     <EntitySet Name="ChiTietDonHangs" EntityType="Self.ChiTietDonHang" />
     <EntitySet Name="DonHangs" EntityType="Self.DonHang" />
+    <EntitySet Name="HeadItems" EntityType="Self.HeadItem" />
     <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -265,27 +287,5 @@
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
-    <EntitySet Name="HeadItems" EntityType="dbd10fcbfd85b748018c53a4c0003fb694Model.HeadItem" />
-    <EntitySet Name="sysdiagrams" EntityType="dbd10fcbfd85b748018c53a4c0003fb694Model.sysdiagram" />
   </EntityContainer>
-  <EntityType Name="HeadItem">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="image" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="caption" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="href" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="type" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
 </Schema>

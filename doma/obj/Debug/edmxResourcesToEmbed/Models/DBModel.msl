@@ -90,6 +90,7 @@
           <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="IDBoSanPham" ColumnName="IDBoSanPham" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -107,6 +108,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="HeadItems">
+      <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.HeadItem">
+        <MappingFragment StoreEntitySet="HeadItem">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="caption" ColumnName="caption" />
+          <ScalarProperty Name="href" ColumnName="href" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="SanPhams">
       <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.SanPham">
         <MappingFragment StoreEntitySet="SanPham">
@@ -120,6 +132,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="AspNetUserRoles" TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
       <EndProperty Name="AspNetRoles">
         <ScalarProperty Name="Id" ColumnName="RoleId" />
@@ -128,27 +151,5 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
-    <EntitySetMapping Name="HeadItems">
-      <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.HeadItem">
-        <MappingFragment StoreEntitySet="HeadItem">
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="href" ColumnName="href" />
-          <ScalarProperty Name="caption" ColumnName="caption" />
-          <ScalarProperty Name="image" ColumnName="image" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="dbd10fcbfd85b748018c53a4c0003fb694Model.sysdiagram">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="definition" ColumnName="definition" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
