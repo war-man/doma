@@ -2,12 +2,8 @@
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using System;
-using System.Web.Mvc;
-using Microsoft.Owin.Security.Google;
-using Microsoft.Owin.Security;
 
-namespace doma
+namespace WebApplication1
 {
     public partial class Startup
     {
@@ -18,8 +14,7 @@ namespace doma
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
-
+                LoginPath = new PathString("/Account/Login")
             });
             // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
@@ -33,18 +28,11 @@ namespace doma
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            app.UseFacebookAuthentication(
-               appId: "445403702278816",
-               appSecret: "f828129414e8cb69cf0f8e610ccd09b8");
+            //app.UseFacebookAuthentication(
+            //   appId: "",
+            //   appSecret: "");
 
-            var googleOAuth2AuthenticationOptions = new GoogleOAuth2AuthenticationOptions
-            {
-                ClientId = "627351096937-m9ibfchfkv5f538pgosceik9kopd4tgh.apps.googleusercontent.com",
-                ClientSecret = "SCl8GHSMBWe2_fs42saDvAV",
-            };
-            app.UseGoogleAuthentication(googleOAuth2AuthenticationOptions);
+            //app.UseGoogleAuthentication();
         }
     }
-
- 
 }

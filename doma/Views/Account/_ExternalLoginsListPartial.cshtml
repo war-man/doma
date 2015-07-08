@@ -1,14 +1,14 @@
 ﻿@using Microsoft.Owin.Security
 
-<h4>Use another service to log in.</h4>
-<hr />
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
     if (loginProviders.Count() == 0)
     {
         <div>
-            <p>There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=313242">this article</a>
-            for details on setting up this ASP.NET application to support logging in via external services.</p>
+            <p>
+                There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=313242">this article</a>
+                for details on setting up this ASP.NET application to support logging in via external services.
+            </p>
         </div>
     }
     else
@@ -20,10 +20,23 @@
             @Html.AntiForgeryToken()
             <div id="socialLoginList">
                 <p>
-                @foreach (AuthenticationDescription p in loginProviders)
-                {
-                    <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
-                }
+                    @foreach (AuthenticationDescription p in loginProviders)
+                    {                        
+                        if (p.AuthenticationType == "Facebook")
+                        {
+                            <button type="submit" class="btn btn-block btn-social btn-facebook btn-flat" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">
+                                <i class="fa fa-facebook"></i>
+                                @p.AuthenticationType
+                            </button>
+                        }
+                        if (p.AuthenticationType == "Google")
+                        {
+                            <button type="submit" class="btn btn-block btn-social btn-google-plus btn-flat" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">
+                                <i class="fa fa-google-plus"></i>
+                                @p.AuthenticationType
+                            </button>
+                        }
+                    }
                 </p>
             </div>
         }
