@@ -18,36 +18,28 @@
         </div>
 
         <div class="box-body">
-         
-                <h4>Thông tin người nhận</h4>
 
-                <div class="col-lg-10 col-lg-offset-2">
+            <div class="box box-info box-body"  style="box-shadow: 5px 5px 5px #D7D7D7; border-top: 3px solid #FFFFFF !important;">
+                <h4>Thông tin người nhận</h4>
+                <div>
                     <div class="col-lg-3"><span>Người nhận: </span></div>
                     <div class="col-lg-9"><strong>@user.HoTen</strong></div>
-
-
                     <br />
-
                     <div class="col-lg-3"><span>Số điện thoại: </span></div>
                     <div class="col-lg-9"><strong>@Model.SoDienThoai</strong></div>
-
-
                     <br />
-
                     <div class="col-lg-3"><span>Địa chỉ giao hàng: </span></div>
                     <div class="col-lg-9"><strong>@Model.DiaChiGiao</strong></div>
-
-
                     <br />
-
                     <div class="col-lg-3">Thời gian giao hàng: </div>
                     <div class="col-lg-9"><span>@Model.ThoiGianGiao </span></div>
                     <br />
                 </div>
-       
+            </div>
 
-
-   
+            <div class="clearfix"></div>
+            <br />
+            <div>
                 <h4>Danh sách sản phẩm</h4>
                 <hr />
                 <table class="table table-hover">
@@ -63,7 +55,7 @@
                     </thead>
 
                     <tbody>
-                        <tr ng-repeat="product in products track by product.id">
+                        <tr ng-repeat="product in products track by product.count_number">
                             <td>{{product.name}}</td>
                             <td><img ng-src="{{product.imgs[0].link}}" style="  width: 50px;" /></td>
                             <td>{{product.price | number}} VNĐ</td>
@@ -82,9 +74,7 @@
                         </tr>
                     </tfoot>
                 </table>
-  
-       
-
+            </div>
         </div>
         <div class="box-footer clearfix">
             <button style="float:right;" class="btn btn-success" ng-click="xacnhan()">Mua hàng</button>

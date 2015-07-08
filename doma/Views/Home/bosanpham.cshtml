@@ -51,35 +51,37 @@
         <div class="clearfix"></div>
         <br />
         <h4>Chi tiết bộ sản phẩm</h4>
-        <table class="table table-hover table-bordered">
-            <thead>
-                <tr>
-                    <td>Mã</td>
-                    <td>Tên sản phẩm</td>                   
-                    <td>Số lượng</td>
-                    <td>Đơn giá</td>
-                    <td>Thành tiền</td>
-                </tr>
-            </thead>
-            <tbody>
+        <div style="overflow:auto;">
+            <table class="table table-hover table-bordered" style="min-width:350px;">
+                <thead>
+                    <tr>
+                        <td>Mã</td>
+                        <td>Tên sản phẩm</td>
+                        <td>Số lượng</td>
+                        <td>Đơn giá</td>
+                        <td>Thành tiền</td>
+                    </tr>
+                </thead>
+                <tbody>
 
-                <tr ng-repeat="sanpham in products">
-                    <td>{{sanpham.id}}</td>
-                    <td>{{sanpham.name}}</td>                    
-                    <td>
-                        <input type="number" class="form-control" ng-model="sanpham.number" />
-                    </td>
-                    <td style="color:red;">{{sanpham.price | number}} VNĐ</td>
-                    <td style="color:red;">{{sanpham.number * sanpham.price | number}} VNĐ</td>
-                </tr>
+                    <tr ng-repeat="sanpham in products">
+                        <td>{{sanpham.id}}</td>
+                        <td>{{sanpham.name}}</td>
+                        <td>
+                            <input type="number" class="form-control" ng-model="sanpham.number" />
+                        </td>
+                        <td style="color:red;">{{sanpham.price | number}} VNĐ</td>
+                        <td style="color:red;">{{sanpham.number * sanpham.price | number}} VNĐ</td>
+                    </tr>
 
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="5"><small>Chú ý, số lượng mặc định là số lượng người mua hàng thường mua trong bộ sản phẩm.</small></td>
-                </tr>
-            </tfoot>
-        </table>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5"><small>Chú ý, số lượng mặc định là số lượng người mua hàng thường mua trong bộ sản phẩm.</small></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
     </div>
     <div class="box-footer">
         <a class="btn btn-success" ng-click="themvaogiohang()">Thêm vào giỏ hàng</a>

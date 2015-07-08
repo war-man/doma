@@ -97,8 +97,8 @@
                 <img ng-src="{{product.img}}" class="img-box" />
             </div>
             <div class="box-footer" style="text-align:center;">
-                <p>{{product.name}}</p>
-                <p>{{product.price}}</p>
+                <strong>{{product.name}}</strong>
+                <p style="color:red;">{{product.price | number}} VNĐ</p>
                 <button class="btn btn-info" ng-click="xemsanpham(product.id)"><i class="fa fa-cart-arrow-down"></i> Thêm vào giỏ hảng</button>
             </div>
         </div>
@@ -112,12 +112,31 @@
     <div class="col-md-3" ng-repeat="product in groupproducts">
         <div class="box box-img">
             <div class="box-body">
-                <img ng-src="{{product.img}}" class="img-box" />
-            </div>
-            <div class="box-footer" style="text-align:center;">
-                <p>{{product.name}}</p>
-                <p>{{product.price}}</p>
-                <button class="btn btn-info" ng-click="xembosanpham(product.id)"><i class="fa fa-cart-arrow-down"></i> Thêm vào giỏ hảng</button>
+
+                @*<img ng-src="{{product.img}}" class="img-box" />*@
+
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="item active" style="cursor:pointer;">
+                            <img ng-src="{{product.imgs[0].link}}">
+                            <div class="carousel-caption">
+                                {{product.name}}
+                            </div>
+                        </div>
+
+                        <div class="item" style="cursor:pointer;" ng-repeat="img in product.imgs">
+                            <img ng-src="{{img.link}}">
+                            <div class="carousel-caption">
+                                {{product.name}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-footer" style="text-align:center;">
+                    <strong>{{product.name}}</strong> <br />
+                    <button class="btn btn-info" ng-click="xembosanpham(product.id)"><i class="fa fa-cart-arrow-down"></i> Thêm vào giỏ hảng</button>
+                </div>
             </div>
         </div>
     </div>
@@ -134,14 +153,13 @@
             <div class="box box-img">
                 <div class="box-header"><a href="../../home/baiviet/@item.ID"><strong>@item.TieuDe</strong></a></div>
                 <div class="box-body">
-                    <img ng-src="@item.linkHinh" class="img-box" />
+                    <img src="@item.linkHinh" class="img-box" />
                 </div>
                 <div class="box-footer" style="text-align:center;">
                     <small>@item.NgayDang</small>
                 </div>
             </div>
         </div>
-
 
     }
 

@@ -30,7 +30,10 @@
                         <td>{{product.name}}</td>
                         <td><img ng-src="{{product.imgs[0].link}}" style="  width: 50px;" /></td>
                         <td>{{product.price | number}} VNĐ</td>
-                        <td>{{product.number | number}}</td>
+                        <td>
+                            <input type="number" class="form-control" ng-model="product.number" ng-blur='saveData()' />                       
+                        </td>
+                        
                         <td style="color:red;">{{product.number * product.price | number}} VNĐ</td>
                         <td><button class="btn btn-warning" ng-click="deleteproduct(product.count_number)">Xóa</button></td>
                         <td>{{product.comment}}</td>
@@ -39,7 +42,7 @@
 
                 <tfoot>
                     <tr>
-                        <td colspan="4"></td>
+                        <td colspan="3"></td>
                         <td>Tổng tiền</td>
                         <td style="color:red;">{{totalamount | number}} VNĐ</td>
                         <td></td>

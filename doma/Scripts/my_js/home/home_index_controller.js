@@ -37,6 +37,7 @@
         $scope.addgrouproduct = function (sanpham) {
             var item = {};
             item.img = my_function_services.pasreimg(sanpham.img)[0].link;
+            item.imgs = my_function_services.pasreimg(sanpham.img);
             item.name = sanpham.Ten;
             item.id = sanpham.id;
             $scope.groupproducts.push(item);

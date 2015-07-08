@@ -21,6 +21,11 @@
             $rootScope.$broadcast('them_gio_hang_modal_controller::show', id);
         }
 
+        $scope.saveData = function () {
+            $scope.counttotalamount();
+            cart_service.save_cart();
+        }
+
         $scope.deleteproduct = function (count_number) {
             var quest = confirm("Bạn muốn xóa sản phẩm này?");
             if (quest) {

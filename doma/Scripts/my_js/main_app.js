@@ -75,6 +75,7 @@ app.service('cart_service', function ($window) {
         item.number = product.number;
         item.idbosanpham = product.idbosanpham;
         item.comment = product.comment;
+        item.price = product.price;
 
         item.count_number = count_number + 1;
         count_number += 1;
@@ -148,7 +149,8 @@ app.service('cart_service', function ($window) {
         clean: clean,
         remove_double_item: remove_double_item,
         removeproduct: removeproduct,
-        getitemincart: getitemincart
+        getitemincart: getitemincart,
+        save_cart: save_cart
     }
 })
 
