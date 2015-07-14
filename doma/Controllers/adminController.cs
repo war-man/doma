@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace doma.Controllers
 {
-    [RequireHttps]
+    [Authorize(Roles="Admin")]
     public class adminController : Controller
     {
         ProjectDMEntities db = new ProjectDMEntities();
