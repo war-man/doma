@@ -62,3 +62,4 @@ F:\5. Project\2. doma\trunk\doma\obj\Debug\doma.Migrations.addavatar.resources
 F:\5. Project\2. doma\trunk\doma\obj\Debug\doma.csproj.GenerateResource.Cache
 F:\5. Project\2. doma\trunk\doma\obj\Debug\doma.dll
 F:\5. Project\2. doma\trunk\doma\obj\Debug\doma.pdb
+F:\5. Project\2. doma\trunk\doma\bin\Owin.Security.Providers.dll
