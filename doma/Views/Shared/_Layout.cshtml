@@ -56,16 +56,13 @@
         @Html.Partial("_header_menu")
 
         <div class="content-wrapper row">
-            <div class="content">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
+            <div class="content">               
+                <div class="col-sm-12">
                     @RenderBody()
                     @Html.Partial("_gio_hang_modal")
                 </div>
             </div><!-- /.content-wrapper -->
-            <div class="col-md-1"></div>
-
-
+          
         </div>
 
         @Html.Partial("_footer")

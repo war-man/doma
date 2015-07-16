@@ -9,7 +9,7 @@
 
 <div ng-controller="home_index_controller" class="row" ng-init="init()">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-sm-9">
             <div class="box box-solid no-padding">
                 <div class="box-body">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -70,7 +70,7 @@
                 </div><!-- /.box-body -->
             </div>
         </div>
-        <div class="col-md-3" style="overflow:auto;">
+        <div class="col-sm-3" style="overflow:auto;">
 
             @foreach (var item in headitems)
             {
@@ -91,15 +91,16 @@
         Sản phẩm
     </h4>
     <hr />
-    <div class="col-md-3" ng-repeat="product in products">
-        <div class="box box-img">
+
+    <div class="col-sm-3" ng-repeat="product in products">
+        <div class="box box-img" style="max-width:300px; cursor:pointer;" ng-click="xemsanpham(product.id)">
             <div class="box-body">
                 <img ng-src="{{product.img}}" class="img-box" />
             </div>
             <div class="box-footer" style="text-align:center;">
                 <strong>{{product.name}}</strong>
                 <p style="color:red;">{{product.price | number}} VNĐ</p>
-                <button class="btn btn-info" ng-click="xemsanpham(product.id)"><i class="fa fa-cart-arrow-down"></i> Thêm vào giỏ hảng</button>
+                <button class="btn btn-info" ng-click="xemsanpham(product.id)"><i class="fa fa-cart-arrow-down"></i> Chi tiết</button>
             </div>
         </div>
     </div>
@@ -109,12 +110,9 @@
         Bộ sản phẩm
     </h4>
     <hr />
-    <div class="col-md-3" ng-repeat="product in groupproducts">
+    <div class="col-sm-3" ng-repeat="product in groupproducts">
         <div class="box box-img">
             <div class="box-body">
-
-                @*<img ng-src="{{product.img}}" class="img-box" />*@
-
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="item active" style="cursor:pointer;">
@@ -135,7 +133,7 @@
 
                 <div class="box-footer" style="text-align:center;">
                     <strong>{{product.name}}</strong> <br />
-                    <button class="btn btn-info" ng-click="xembosanpham(product.id)"><i class="fa fa-cart-arrow-down"></i> Thêm vào giỏ hảng</button>
+                    <button class="btn btn-info" ng-click="xembosanpham(product.id)"><i class="fa fa-cart-arrow-down"></i> Chi tiết</button>
                 </div>
             </div>
         </div>
@@ -148,20 +146,20 @@
     </h4>
     <hr />
     @foreach (var item in baiviet)
-    {
-        <div class="col-md-3">
-            <div class="box box-img">
-                <div class="box-header"><a href="../../home/baiviet/@item.ID"><strong>@item.TieuDe</strong></a></div>
-                <div class="box-body">
-                    <img src="@item.linkHinh" class="img-box" />
-                </div>
-                <div class="box-footer" style="text-align:center;">
-                    <small>@item.NgayDang</small>
-                </div>
+{
+    <div class="col-sm-3">
+        <div class="box box-img">
+            <div class="box-header"><a href="../../home/baiviet/@item.ID"><strong>@item.TieuDe</strong></a></div>
+            <div class="box-body">
+                <img src="@item.linkHinh" class="img-box" />
+            </div>
+            <div class="box-footer" style="text-align:center;">
+                <small>@item.NgayDang</small>
             </div>
         </div>
+    </div>
 
-    }
+}
 
 </div>
 

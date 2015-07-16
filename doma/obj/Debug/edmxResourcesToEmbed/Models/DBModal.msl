@@ -83,6 +83,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ChiTietDonHangs">
+      <EntityTypeMapping TypeName="ProjectDMModel.ChiTietDonHang">
+        <MappingFragment StoreEntitySet="ChiTietDonHang">
+          <ScalarProperty Name="IDDonHang" ColumnName="IDDonHang" />
+          <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="IDBoSanPham" ColumnName="IDBoSanPham" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="DonHangs">
       <EntityTypeMapping TypeName="ProjectDMModel.DonHang">
         <MappingFragment StoreEntitySet="DonHang">
@@ -140,16 +151,5 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
-    <EntitySetMapping Name="ChiTietDonHangs">
-      <EntityTypeMapping TypeName="ProjectDMModel.ChiTietDonHang">
-        <MappingFragment StoreEntitySet="ChiTietDonHang">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="IDBoSanPham" ColumnName="IDBoSanPham" />
-          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-          <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
-          <ScalarProperty Name="IDDonHang" ColumnName="IDDonHang" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

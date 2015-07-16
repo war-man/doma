@@ -1,0 +1,48 @@
+﻿@model doma.Controllers.SanPhamReturn
+
+@{
+    ViewBag.Title = Model.Ten;
+}
+<script src="~/scripts/my_js/home/home_sanpham_controller.js"></script>
+
+<div class="box box-info" ng-controller="home_bosanpham_controller" data-ng-init="init(@Newtonsoft.Json.JsonConvert.SerializeObject(Model))">
+    <div class="box-body row">
+        <div class="col-sm-4">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" ng-repeat="img in slide" data-slide-to="{{img.number}}" ng-class="img.number == 1? 'active': ''"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div ng-class="img.number == 1? 'item active': 'item'" ng-repeat="img in imgs track by img.number">
+                        <img ng-src="{{img.link}}" style="width:100%;">
+                        <div class="carousel-caption">
+                            {{img.caption}}
+                        </div>
+                    </div>
+                </div>
+
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="fa fa-angle-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="fa fa-angle-right"></span>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <h3>@Model.Ten</h3>
+            <p>Mô tả</p>
+            <h4 style="color:red;">Đơn giá: {{price | number}} VNĐ</h4>
+            <span>
+                Số lượng:
+                <input type="number" class="form-control ng-pristine ng-untouched ng-valid" ng-model="soluong">
+            </span>
+           
+            
+            <br />
+            <a class="btn btn-success" ng-click="themvaogiohang()">Thêm vào giỏ hàng</a>
+        </div>
+    </div>
+
+</div>
+

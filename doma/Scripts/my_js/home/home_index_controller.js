@@ -43,8 +43,9 @@
             $scope.groupproducts.push(item);
         }
 
-        $scope.xemsanpham = function (id) {
-            $rootScope.$broadcast('xem_san_pham::show', id);
+        $scope.xemsanpham = function (id) {      
+            //$rootScope.$broadcast('xem_san_pham::show', id);
+            window.location.href = "../../home/sanpham/" + id;
         }
 
         $scope.xembosanpham = function (id) {

@@ -112,11 +112,6 @@ namespace doma.Controllers
 
         public ActionResult bosanpham(int id)
         {
-            //BoSanPham sanpham = db.BoSanPhams.SingleOrDefault(t => t.ID == id);
-            //if(sanpham !=null)
-            //{
-            //    return View(sanpham);
-            //}
             BoSanPham item = db.BoSanPhams.SingleOrDefault(t => t.ID == id);
             if (item != null)
             {
@@ -144,6 +139,25 @@ namespace doma.Controllers
                 return View(sanpham);
             }
 
+            return HttpNotFound();
+        }
+
+        public ActionResult sanpham(int id)
+        {
+            SanPham item = db.SanPhams.SingleOrDefault(t => t.ID == id);
+            if (item != null)
+            {
+                SanPhamReturn sanpham = new SanPhamReturn
+                {
+                    Ten = item.Ten,
+                    ID = item.ID,
+                    MoTa = item.MoTa,
+                    DonGia =item.DioGia,
+                    linkanh = item.linkanh
+                };
+
+                return View(sanpham);
+            }
             return HttpNotFound();
         }
 

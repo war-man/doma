@@ -6,84 +6,66 @@
 <script src="~/scripts/my_js/home/home_bosanpham_controller.js"></script>
 
 <div class="box box-info" ng-controller="home_bosanpham_controller" data-ng-init="init(@Newtonsoft.Json.JsonConvert.SerializeObject(Model))">
-    <div class="box-header">
-        <h3>@Model.Ten</h3>
-    </div>
-    <div class="box-body">
-        <div class="col-xs-4">  
-                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-example-generic" ng-repeat="img in slide" data-slide-to="{{img.number}}" ng-class="img.number == 1? 'active': ''"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div ng-class="img.number == 1? 'item active': 'item'" ng-repeat="img in slide track by img.number">
-                            <img ng-src="{{img.link}}" style="width:100%;">
-                            <div class="carousel-caption">
-                                {{img.caption}}
-                            </div>
+    <div class="box-body row">
+        <div class="col-sm-4">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" ng-repeat="img in slide" data-slide-to="{{img.number}}" ng-class="img.number == 1? 'active': ''"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div ng-class="img.number == 1? 'item active': 'item'" ng-repeat="img in slide track by img.number">
+                        <img ng-src="{{img.link}}" style="width:100%;">
+                        <div class="carousel-caption">
+                            {{img.caption}}
                         </div>
                     </div>
+                </div>
 
-                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                        <span class="fa fa-angle-left"></span>
-                    </a>
-                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                        <span class="fa fa-angle-right"></span>
-                    </a>
-                </div>           
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="fa fa-angle-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="fa fa-angle-right"></span>
+                </a>
+            </div>
         </div>
-        <div class="col-xs-8">
-            <table class="table table-bordered table-hover">
-                <tbody>
-                    <tr>
-                        <td>Số lượng sản phẩm</td>
-                        <td>@Model.products.Count()</td>
-                    </tr>
+        <div class="col-sm-8">
+            <h3>@Model.Ten</h3>
+            <p>Mô tả</p>
 
-                    <tr>
-                        <td>Mô tả</td>
-                        <td>@Model.Mota</td>
-                    </tr>
-                </tbody>
-            </table>
+
+            <div class="clearfix"></div>
+            <br />
+            <h4>Chi tiết bộ sản phẩm</h4>
+            <div style="overflow:auto;">
+                <table class="table table-hover table-bordered" style="min-width:350px;">
+                    <thead>
+                        <tr>
+                            <td>Mã</td>
+                            <td>Tên sản phẩm</td>
+                            <td>Số lượng</td>
+                            <td>Đơn giá</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="sanpham in products">
+                            <td>{{sanpham.id}}</td>
+                            <td>{{sanpham.name}}</td>
+                            <td>
+                                <input type="number" class="form-control" ng-model="sanpham.number" />
+                            </td>
+                            <td style="color:red;">{{sanpham.price | number}} VNĐ</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5"><small>Chú ý, số lượng mặc định là số lượng người mua hàng thường mua trong bộ sản phẩm.</small></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <a class="btn btn-success" ng-click="themvaogiohang()">Thêm vào giỏ hàng</a>
         </div>
+    </div>    
 
-        <div class="clearfix"></div>
-        <br />
-        <h4>Chi tiết bộ sản phẩm</h4>
-        <div style="overflow:auto;">
-            <table class="table table-hover table-bordered" style="min-width:350px;">
-                <thead>
-                    <tr>
-                        <td>Mã</td>
-                        <td>Tên sản phẩm</td>
-                        <td>Số lượng</td>
-                        <td>Đơn giá</td>
-                        <td>Thành tiền</td>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr ng-repeat="sanpham in products">
-                        <td>{{sanpham.id}}</td>
-                        <td>{{sanpham.name}}</td>
-                        <td>
-                            <input type="number" class="form-control" ng-model="sanpham.number" />
-                        </td>
-                        <td style="color:red;">{{sanpham.price | number}} VNĐ</td>
-                        <td style="color:red;">{{sanpham.number * sanpham.price | number}} VNĐ</td>
-                    </tr>
-
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="5"><small>Chú ý, số lượng mặc định là số lượng người mua hàng thường mua trong bộ sản phẩm.</small></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    </div>
-    <div class="box-footer">
-        <a class="btn btn-success" ng-click="themvaogiohang()">Thêm vào giỏ hàng</a>
-    </div>
 </div>
