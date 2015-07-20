@@ -172,6 +172,37 @@ namespace doma.Controllers
             return RedirectToAction("index");
         }
 
+        //public ActionResult listsanphamrelated(int id, bool bsp) 
+        //{
+        //    List<RelativeObject> results = new List<RelativeObject>();
+        //    // Nếu là bộ sản phẩm thì đưa ra ds sản phẩm
+        //    if(bsp)
+        //    {
+        //            results = (from i in db.SanPhams.AsNoTracking()
+        //                       select new RelativeObject
+        //                       {
+        //                           id = i.ID,
+        //                           name = i.Ten,
+        //                           isgroup = false
+        //                       }).ToList();                             
+        //    }
+        //    // Nếu là sản phẩm thì đưa ra ds các bộ sản phẩm mà sản phẩm đó có trong
+        //    else
+        //    {
+        //        SanPham sanpham = db.SanPhams.SingleOrDefault(t => t.ID == id);
+        //        results = (from i in db.ChiTietBoSanPhams
+        //                   where i.IDSanPham == id
+        //                   select new RelativeObject
+        //                   {
+        //                       id = i.IDBoSanPham,
+        //                       name = i.BoSanPham.Ten,
+        //                       isgroup = true,
+        //                       linkanh = sanpham.linkanh
+        //                   }).ToList();
+        //    }
+        //    return null;
+        //}
+
     }
 
     public class SanPhamReturn
@@ -190,13 +221,20 @@ namespace doma.Controllers
         public string img { get; set; }
     }
 
-
     public class BoSanPhamInfoIndexModal
     {
         public string Ten { get; set; }
         public int id { get; set; }
         public string Mota { get; set; }
         public List<SanPhamTrongBoSanPham> products { get; set; }
+    }
+
+    public class RelativeObject 
+    {
+        public string name;
+        public int id;
+        public bool isgroup;
+        public string linkanh;
     }
 
     public class SanPhamTrongBoSanPham

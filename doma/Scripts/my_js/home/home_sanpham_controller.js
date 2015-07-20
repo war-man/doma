@@ -27,4 +27,8 @@
             alert("Đã thêm vào giỏ hàng");
             window.location.href = "../../home/index";
         }
+        $scope.showimage = function (link) {
+            $('#_imagezoommdal_image').attr("src", link);
+            $("#_imagezoommodal").modal("show");
+        }
     }]);
