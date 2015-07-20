@@ -1014,7 +1014,6 @@
     <Content Include="Views\Home\baiviet.cshtml" />
     <Content Include="Views\admin\createheaditem.cshtml" />
     <Content Include="Views\Home\sanpham.cshtml" />
-    <Content Include="Views\Shared\_relativedItemList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
