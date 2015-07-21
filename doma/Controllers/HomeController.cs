@@ -172,36 +172,38 @@ namespace doma.Controllers
             return RedirectToAction("index");
         }
 
-        //public ActionResult listsanphamrelated(int id, bool bsp) 
-        //{
-        //    List<RelativeObject> results = new List<RelativeObject>();
-        //    // Nếu là bộ sản phẩm thì đưa ra ds sản phẩm
-        //    if(bsp)
-        //    {
-        //            results = (from i in db.SanPhams.AsNoTracking()
-        //                       select new RelativeObject
-        //                       {
-        //                           id = i.ID,
-        //                           name = i.Ten,
-        //                           isgroup = false
-        //                       }).ToList();                             
-        //    }
-        //    // Nếu là sản phẩm thì đưa ra ds các bộ sản phẩm mà sản phẩm đó có trong
-        //    else
-        //    {
-        //        SanPham sanpham = db.SanPhams.SingleOrDefault(t => t.ID == id);
-        //        results = (from i in db.ChiTietBoSanPhams
-        //                   where i.IDSanPham == id
-        //                   select new RelativeObject
-        //                   {
-        //                       id = i.IDBoSanPham,
-        //                       name = i.BoSanPham.Ten,
-        //                       isgroup = true,
-        //                       linkanh = sanpham.linkanh
-        //                   }).ToList();
-        //    }
-        //    return null;
-        //}
+        public ActionResult listsanphamrelated(int id, bool bsp)
+        {
+            List<RelativeObject> results = new List<RelativeObject>();
+            // Nếu là bộ sản phẩm thì đưa ra ds sản phẩm
+            if (bsp)
+            {
+                results = (from i in db.SanPhams.AsNoTracking()
+                           select new RelativeObject
+                           {
+                               id = i.ID,
+                               name = i.Ten,
+                               isgroup = false,
+                               linkanh = i.linkanh
+                           }).ToList();
+            }
+            // Nếu là sản phẩm thì đưa ra ds các bộ sản phẩm mà sản phẩm đó có trong
+            else
+            {
+                SanPham sanpham = db.SanPhams.SingleOrDefault(t => t.ID == id);
+                results = (from i in db.ChiTietBoSanPhams
+                           where i.IDSanPham == id
+                           select new RelativeObject
+                           {
+                               id = i.IDBoSanPham,
+                               name = i.BoSanPham.Ten,
+                               isgroup = true,
+                               linkanh = sanpham.linkanh
+                           }).ToList();
+            }
+
+            return Json(results, JsonRequestBehavior.AllowGet);
+        }
 
     }
 
