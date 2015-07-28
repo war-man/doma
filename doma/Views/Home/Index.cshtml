@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Hàng mã Hiếu Thắng";
+    ViewBag.Title = "Hàng mã Bỉnh Phương";
     doma.Models.ProjectDMEntities db = new doma.Models.ProjectDMEntities();
     List<doma.Models.BaiViet> baiviet = db.BaiViets.OrderBy(t => t.NgayDang).ToList();
     List<doma.Models.HeadItem> headitems = db.HeadItems.ToList();

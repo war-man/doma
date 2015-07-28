@@ -2,8 +2,8 @@
     function ($scope, $scope, $rootScope, $http, my_function_services, cart_service) {
 
         $scope.items = [];
-        $scope.init = function (id, isgroup) {
-            $http.get("../../home/listsanphamrelated?id=" + id + "&&bsp="+isgroup).success(function (data) {
+        $scope.init = function (id, isgroup, israndom) {
+            $http.get("../../home/listsanphamrelated?id=" + id + "&&bsp=" + isgroup + "&&israndom="+israndom).success(function (data) {
                 for (var i = 0; i < data.length; i++) {
                     $scope.additem(data[i]);
                 }

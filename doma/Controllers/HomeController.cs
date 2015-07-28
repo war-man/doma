@@ -172,7 +172,7 @@ namespace doma.Controllers
             return RedirectToAction("index");
         }
 
-        public ActionResult listsanphamrelated(int id, bool bsp)
+        public ActionResult listsanphamrelated(int id, bool bsp, bool israndom = false)
         {
             List<RelativeObject> results = new List<RelativeObject>();
             // Nếu là bộ sản phẩm thì đưa ra ds sản phẩm
@@ -199,7 +199,26 @@ namespace doma.Controllers
                                name = i.BoSanPham.Ten,
                                isgroup = true,
                                linkanh = sanpham.linkanh
-                           }).ToList();
+                           }).ToList();               
+            }
+
+            // Nếu random sản phẩm thì đưa ra ds sản phẩm random
+            if (israndom)
+            {
+                List<RelativeObject> listrandom = new List<RelativeObject>();
+
+                Random rnd = new Random();
+                int xrd = rnd.Next(2, 5);
+                listrandom = (from i in db.SanPhams.AsNoTracking()
+                              where (i.ID % xrd == 0)
+                              select new RelativeObject
+                              {
+                                  id = i.ID,
+                                  name = i.Ten,
+                                  isgroup = false,
+                                  linkanh = i.linkanh
+                              }).ToList();
+                results.AddRange(listrandom);
             }
 
             return Json(results, JsonRequestBehavior.AllowGet);
