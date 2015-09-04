@@ -76,10 +76,10 @@
             {
                 if (item.type == 1)
                 {
-                    <div class="info-box bg-info" onclick="redirectitem('@item.href')" style="cursor:pointer;">
-                        <span class="info-box-icon"><img src="@item.image" style="width: 90px;" /></span>
+                    <div class="box info-box bg-info" onclick="redirectitem('@item.href')" style="cursor:pointer;">
+                        <span class="info-box-icon" style="width:120px; background-color:white; padding-top:3px;"><img src="@item.image" style="width: 110px;" /></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">@item.caption</span>
+                            <strong class="info-box-text">@item.caption</strong>
                         </div><!-- /.info-box-content -->
                     </div><!-- /.info-box -->
                 }
