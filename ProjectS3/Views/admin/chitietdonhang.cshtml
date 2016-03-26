@@ -1,0 +1,160 @@
+﻿@model ProjectS3.Models.DonHang
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng: " + Model.ID;
+    double total = 0;
+    int _cd = (int)(Model.ThoiGianGiao - DateTime.Now).TotalDays;
+
+    string avatar = "";
+    if (Model.UserID != null)
+    {
+        ProjectS3.Models.ProjectS3Entities db = new ProjectS3.Models.ProjectS3Entities();
+        avatar = db.AspNetUsers.SingleOrDefault(t => t.Id == Model.UserID).avatar;
+    }
+    else
+    {
+        avatar = "../../content/defaultavatar.png";
+    }
+
+    if (Model.Comment == null)
+    {
+        Model.Comment = "";
+    }
+}
+<section>
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            @Html.Partial("_my_break_bar_top")
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3>Đơn hàng: Mã @Model.ID</h3>
+                </div>
+
+                <div class="box-body">
+                    <h4>Thông tin</h4>
+
+                    <div class="col-md-3">
+                        <img src="@avatar" style="width: 200px;" />
+                    </div>
+                    <div class="col-md-9">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>Người đặt</td>
+                                <td>
+                                    @if (Model.UserID != null)
+                                    {
+                                        <strong><a href="../../admin/userinfor/@Model.UserID">@Model.HoTen</a></strong> <span style="color:blue;"> - Thành viên</span>
+                                    }
+                                    else
+                                    {
+                                        <strong>@Model.HoTen</strong> <span style="color:blue;"> - Tài khoản không đăng ký</span>
+                                    }
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Điện thoại</td>
+                                <td><strong>@Model.SoDienThoai</strong></td>
+                            </tr>
+
+                            <tr>
+                                <td>Địa chỉ giao</td>
+                                <td><strong>@Model.DiaChiGiao</strong></td>
+                            </tr>
+
+                            <tr>
+                                <td>Ngày đặt</td>
+                                <td><strong>@Model.NgayTao</strong></td>
+                            </tr>
+
+                            <tr>
+                                <td>Ngày giao</td>
+                                <td><strong>@Model.ThoiGianGiao - <strong style="color:red;">Còn @_cd ngày</strong></strong></td>
+                            </tr>
+                            <tr>
+                                <td>Tình trạng</td>
+                                <td>
+                                    @switch (Model.TinhTrang)
+                                    {
+                                        case 0:
+                                            <span class="badge bg-gray">Dã hủy</span>
+                                            break;
+                                        case 1:
+                                        <span class="badge bg-red">Mới, đang đợi gọi xác nhận</span>
+                                            break;
+                                        case 2:
+                                        <span class="badge bg-green-active">Đã gọi và đang chuẩn bị hàng</span>
+                                            break;
+                                        case 3:
+                                        <span class="badge bg-blue-active">Đang gửi đi</span>
+                                            break;
+                                        case 4:
+                                        <span class="badge bg-blue">Đã gửi đi và nhận tiền</span>
+                                            break;
+                                    }
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <h4>Ghi chú</h4>
+                    <form action="../../admin/updatecomment" method="post">
+                        <input name="id" type="hidden" value="@Model.ID" />
+                        <textarea name="comment" class="form-control" placeholder="Ghi chú của admin" style="height: 100px;">@Model.Comment</textarea>
+                        <br />
+                        <input type="submit" value="Lưu" class="btn btn-warning pull-right" />
+                    </form>
+                    <div class="clearfix"></div>
+                    <h4>Chi tiết đơn hàng</h4>
+                    <hr />
+
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <td><strong>Mã</strong></td>
+                                <td><strong>Tên</strong></td>
+                                <td><strong>Màu</strong></td>
+                                <td><strong>Size</strong></td>
+                                <td><strong>Đơn giá</strong></td>
+                                <td><strong>Số lượng</strong></td>
+                                <td><strong>Thành tiền (VNĐ) </strong></td>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ChiTietDonHang)
+                            {
+                                <tr>
+                                    <td>@item.IDSanPham</td>
+                                    <td><a href="../../home/sanpham/@item.IDSanPham">@item.SanPham.Ten</a> </td>
+                                    <td>@item.Color</td>
+                                    <td>@item.Size</td>
+                                    <td>@item.DioGia</td>
+                                    <td>@item.SoLuong</td>
+                                    <td style="color: red; text-align: right;">@(((double)(@item.DioGia * @item.SoLuong)).ToString("#,##"))</td>
+
+                                    @{
+                                total += (double)item.DioGia * item.SoLuong;
+                                    }
+                                </tr>
+                            }
+
+                            <tr>
+                                <td colspan="6">Tổng tiền</td>
+                                <td style="color: red; text-align: right;"><strong>@total.ToString("#,##")</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="box-footer">
+                    <a class="btn btn-success" href="../../admin/doitrangthaidonhang?id=@Model.ID&&tinhtrang=2" style="margin-right: 20px;">Đã gọi xác nhận</a>
+                    <a class="btn btn-primary" href="../../admin/doitrangthaidonhang?id=@Model.ID&&tinhtrang=3" style="margin-right: 20px;">Đang gửi đi</a>
+                    <a class="btn btn-danger" href="../../admin/doitrangthaidonhang?id=@Model.ID&&tinhtrang=4">Đã thanh toán và gửi hàng</a>
+                    <a class="btn btn-default" href="../../admin/doitrangthaidonhang?id=@Model.ID&&tinhtrang=0" style="float:right;">Hủy đơn hàng</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
